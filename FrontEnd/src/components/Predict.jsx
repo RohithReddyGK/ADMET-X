@@ -1,138 +1,138 @@
 import { useState } from "react";
 import DrawMolecule from "./DrawMolecule";
+import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import predictAnimation from "../assets/Predict.json"; // Your new animation
 
 const Predict = () => {
-    const [selectedOption, setSelectedOption] = useState("text");
-    const [smilesInput, setSmilesInput] = useState("");
-    const [file, setFile] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("text");
+  const [smilesInput, setSmilesInput] = useState("");
+  const [file, setFile] = useState(null);
 
-    const handleFileChange = (e) => {
-        const uploadedFile = e.target.files[0];
-        if (uploadedFile) {
-            const fileType = uploadedFile.type;
+  const handleFileChange = (e) => {
+    const uploadedFile = e.target.files[0];
+    if (uploadedFile) {
+      const fileType = uploadedFile.type;
+      if (fileType === "text/plain" || fileType === "text/csv") {
+        setFile(uploadedFile);
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const text = event.target.result;
+          if (fileType === "text/csv") {
+            const parsedSMILES = text.split("\n").map(line => line.trim());
+            setSmilesInput(parsedSMILES.join("\n"));
+          } else setSmilesInput(text);
+        };
+        reader.readAsText(uploadedFile);
+      } else alert("Please upload a valid .txt or .csv file.");
+    }
+  };
 
-            if (fileType === "text/plain" || fileType === "text/csv") {
-                setFile(uploadedFile);
+  const handleExample = () => setSmilesInput(`CC(=O)NC1=CC=C(C=C1)O`);
 
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    const text = event.target.result;
+  const handlePredict = () => {
+    if (!smilesInput.trim()) return alert("Please provide at least one SMILE input.");
+    console.log("Predicting for SMILES:\n", smilesInput);
+  };
 
-                    // If it's a CSV, parse it line by line (simplified handling for CSV).
-                    if (fileType === "text/csv") {
-                        const parsedSMILES = text.split("\n").map(line => line.trim());
-                        setSmilesInput(parsedSMILES.join("\n"));
-                    } else {
-                        setSmilesInput(text); // For plain text, directly set input.
-                    }
-                };
-                reader.readAsText(uploadedFile);
-            } else {
-                alert("Please upload a valid .txt or .csv file.");
-            }
-        }
-    };
+  return (
+    <motion.div
+      className="p-6 max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl animate-slide-up"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <h1 className="text-3xl font-bold mb-6 text-center">Prediction of ADMET Properties</h1>
 
-    const handleExample = () => {
-        const example = `CC(=O)NC1=CC=C(C=C1)O`;
-        setSmilesInput(example);
-    };
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+        {/* Left: Lottie Animation */}
+        <motion.div
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Lottie animationData={predictAnimation} loop={true} className="w-full h-80 md:h-[400px]" />
+        </motion.div>
 
-    const handlePredict = () => {
-        if (!smilesInput.trim()) {
-            alert("Please provide at least one SMILE input.");
-            return;
-        }
-        // Send "smilesInput" to backend for prediction.
-        console.log("Predicting for SMILES:\n", smilesInput);
-    };
+        {/* Right: Input Tabs + Content */}
+        <motion.div
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Tabs */}
+          <div className="flex justify-center space-x-4 mb-4 md:justify-start">
+            {["text","file","draw","example"].map(option => (
+              <button
+                key={option}
+                className={`px-4 py-2 rounded font-medium transition ${selectedOption===option ? "bg-blue-600 text-white dark:bg-blue-800" : "bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-white"}`}
+                onClick={() => { setSelectedOption(option); if(option==="example") handleExample(); }}
+              >
+                {option==="text"?"Text Input":option==="file"?"Upload File":option==="draw"?"Draw Molecule":"Example"}
+              </button>
+            ))}
+          </div>
 
-    return (
-        <div className="p-6 max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl">
-            <div className="container mx-auto">
-                <h1 className="text-3xl font-bold mb-4 text-center">Prediction of ADMET Properties</h1>
+          {/* Content */}
+          {selectedOption==="text" && (
+            <textarea
+              className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 mb-4"
+              placeholder="Paste SMILES here (one per line)..."
+              value={smilesInput}
+              onChange={e => setSmilesInput(e.target.value)}
+            />
+          )}
 
-                {/* Tabs */}
-                <div className="flex justify-center space-x-4 mb-6">
-                    {["text", "file", "draw", "example"].map((option) => (
-                        <button
-                            key={option}
-                            className={`px-6 py-2 rounded font-medium transition ${selectedOption === option
-                                    ? "bg-blue-600 text-white dark:bg-blue-800 dark:text-white"
-                                    : "bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-white"
-                                }`}
-                            onClick={() => {
-                                setSelectedOption(option);
-                                if (option === "example") handleExample();
-                            }}
-                        >
-                            {option === "text"
-                                ? "Text Input"
-                                : option === "file"
-                                    ? "Upload File"
-                                    : option === "draw"
-                                        ? "Draw Molecule"
-                                        : "Example"}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Content */}
-                <div className="mb-6">
-                    {selectedOption === "text" && (
-                        <textarea
-                            className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
-                            placeholder="Paste SMILES here (one per line)..."
-                            value={smilesInput}
-                            onChange={(e) => setSmilesInput(e.target.value)}
-                        />
-                    )}
-
-                    {selectedOption === "file" && (
-                        <div className="space-y-3">
-                            <label className="font-medium">Upload a .txt or .csv file containing SMILES</label>
-                            <input
-                                type="file"
-                                accept=".txt,.csv"
-                                onChange={handleFileChange}
-                                className="block border p-2 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
-                            />
-                            {smilesInput && (
-                                <textarea
-                                    className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                                    value={smilesInput}
-                                    readOnly
-                                />
-                            )}
-                        </div>
-                    )}
-
-                    {selectedOption === "draw" && (
-                        <div className="w-full p-2 border rounded-lg">
-                            <DrawMolecule onSmilesGenerated={(smiles) => setSmilesInput(smiles)} />
-                        </div>
-                    )}
-
-                    {selectedOption === "example" && (
-                        <textarea
-                            className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
-                            value={smilesInput}
-                            readOnly
-                        />
-                    )}
-                </div>
-
-                <div className="flex justify-center">
-                    <button
-                        onClick={handlePredict}
-                        className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-all duration-300 dark:bg-green-500 dark:hover:bg-green-600"
-                    >
-                        Predict
-                    </button>
-                </div>
+          {selectedOption==="file" && (
+            <div className="space-y-3 mb-4">
+              <label className="font-medium">Upload a .txt or .csv file containing SMILES</label>
+              <input
+                type="file"
+                accept=".txt,.csv"
+                onChange={handleFileChange}
+                className="block border p-2 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+              />
+              {smilesInput && (
+                <textarea
+                  className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                  value={smilesInput}
+                  readOnly
+                />
+              )}
             </div>
-        </div>
-    );
+          )}
+
+          {selectedOption==="draw" && (
+            <div className="w-full p-2 border rounded-lg mb-4">
+              <DrawMolecule onSmilesGenerated={(smiles)=>setSmilesInput(smiles)} />
+            </div>
+          )}
+
+          {selectedOption==="example" && (
+            <textarea
+              className="w-full h-40 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 mb-4"
+              value={smilesInput}
+              readOnly
+            />
+          )}
+
+          <div className="flex justify-center md:justify-start">
+            <button
+              onClick={handlePredict}
+              className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-all duration-300 dark:bg-green-500 dark:hover:bg-green-600"
+            >
+              Predict
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default Predict;
