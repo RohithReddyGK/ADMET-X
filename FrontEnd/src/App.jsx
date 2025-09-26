@@ -23,7 +23,7 @@ function App() {
           <motion.div
             key="intro"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 2 }}
             exit={{ opacity: 0 }}
             className="flex justify-center items-center h-screen bg-white"
           >

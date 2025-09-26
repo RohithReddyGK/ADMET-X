@@ -59,7 +59,6 @@ def detect_task_type(df: pd.DataFrame, target_col="Y"):
 def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
                 save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\Bioavailability_Ma.joblib"):
     df = pd.read_csv(train_csv)
-
     task_type, units = detect_task_type(df, label_col)
 
     # Compute descriptors
@@ -83,8 +82,7 @@ def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
     return model, feature_cols, task_type, units
 
 # ---------- Evaluate Model ----------
-def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="Y",
-                   task_type="classification"):
+def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="Y", task_type="classification"):
     df = pd.read_csv(test_csv)
     desc_list = [compute_descriptors(s) for s in df[smiles_col].astype(str)]
     desc_df = pd.DataFrame(desc_list)
@@ -94,10 +92,16 @@ def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="
     if task_type == "classification":
         y = y.astype(int)
         y_pred = model.predict(X)
-        y_prob = model.predict_proba(X)[:, 1]
         print("Evaluation on Test Set (Classification)")
         print(classification_report(y, y_pred))
-        print("ROC-AUC:", roc_auc_score(y, y_prob))
+
+        # Binary ROC-AUC
+        y_prob = model.predict_proba(X)
+        try:
+            auc = roc_auc_score(y, y_prob[:, 1])
+            print("ROC-AUC:", auc)
+        except:
+            print("ROC-AUC could not be computed")
     else:
         y_pred = model.predict(X)
         print("Evaluation on Test Set (Regression)")
@@ -106,16 +110,22 @@ def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="
         print(f"MSE: {mean_squared_error(y, y_pred):.4f}")
 
 # ---------- Predict and Save ----------
-def predict_and_save(model, feature_cols, valid_csv, out_csv, smiles_col="Drug",
-                     task_type="classification", units="-"):
+def predict_and_save_binary(model, feature_cols, valid_csv, out_csv, smiles_col="Drug",
+                            task_type="classification", units="-"):
     df = pd.read_csv(valid_csv)
     desc_list = [compute_descriptors(s) for s in df[smiles_col].astype(str)]
     desc_df = pd.DataFrame(desc_list)
     df = pd.concat([df, desc_df], axis=1).dropna()
 
     X = df[feature_cols].values
+
     if task_type == "classification":
-        df["Prediction"] = model.predict_proba(X)[:, 1]
+        # Probabilities for both classes
+        probs = model.predict_proba(X)
+        classes = model.classes_
+        for i, cls in enumerate(classes):
+            df[f"Prob_Class_{cls}"] = probs[:, i]
+        df["Predicted_Class"] = model.predict(X)
     else:
         df["Prediction"] = model.predict(X)
 
@@ -139,7 +149,7 @@ if __name__ == "__main__":
         r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\test.csv",
         task_type=task_type
     )
-    df_valid = predict_and_save(
+    df_valid = predict_and_save_binary(
         model, feature_cols,
         r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\valid.csv",
         r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Predictions\Bioavailability_Ma.csv",
