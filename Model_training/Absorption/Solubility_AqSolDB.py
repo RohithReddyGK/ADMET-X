@@ -1,5 +1,5 @@
 # Solubility_AqSolDB.py (Robust Version)
-
+'''
 import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, Lipinski
@@ -154,3 +154,4 @@ if __name__ == "__main__":
     evaluate_model(model, feature_cols, test_csv, task_type=task_type)
     df_valid = predict_and_save(model, feature_cols, valid_csv, out_csv, task_type=task_type, units=units)
     print(df_valid.head())
+    '''
