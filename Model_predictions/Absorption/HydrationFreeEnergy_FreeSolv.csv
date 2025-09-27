@@ -1,0 +1,65 @@
+Drug_ID,Drug,Y,MolWt,LogP,NumHDonors,NumHAcceptors,TPSA,NumRotatableBonds,AtomCount,Prediction,Lipinski,Ghose,Veber,Egan,Muegge,Units
+ammonia,N,-4.29,17.031,0.16199999999999998,1,1,35.0,0,1,0.0,Yes,No,Yes,Yes,No,-
+diethoxymethoxybenzene,CCOC(OCC)Oc1ccccc1,-5.23,196.24600000000004,2.4220000000000006,0,3,27.69,6,14,0.0,Yes,No,Yes,Yes,No,-
+nitrobenzene,O=[N+]([O-])c1ccccc1,-4.12,123.11099999999996,1.5948,0,2,43.14,1,9,0.0,Yes,No,Yes,Yes,No,-
+2-methylthiophene,Cc1cccs1,-1.38,98.17000000000002,2.05652,0,1,0.0,0,6,0.0,Yes,No,Yes,Yes,No,-
+2-nitrophenol,O=[N+]([O-])c1ccccc1O,-4.58,139.10999999999999,1.3003999999999998,1,3,63.370000000000005,1,10,0.0,Yes,No,Yes,Yes,No,-
+fluorobenzene,Fc1ccccc1,-0.8,96.10399999999998,1.8256999999999999,0,0,0.0,0,7,0.0,Yes,No,Yes,Yes,No,-
+1-chlorobutane,CCCCCl,-0.16,92.56899999999999,2.0253,0,0,0.0,2,5,0.0,Yes,No,Yes,Yes,No,-
+sulfolane,[O-][S+2]1([O-])CCCC1,-8.61,120.173,0.19500000000000006,0,2,46.12,0,7,0.0,Yes,No,Yes,Yes,No,-
+"1,3-dichloropropane",ClCCCCl,-1.89,112.98700000000001,1.8540999999999999,0,0,0.0,2,5,0.0,Yes,No,Yes,Yes,No,-
+nonan-2-one,CCCCCCCC(C)=O,-2.49,142.242,2.935900000000002,0,1,17.07,6,10,0.0,Yes,No,Yes,Yes,No,-
+"1,2-dichlorobenzene",Clc1ccccc1Cl,-1.36,147.00399999999996,2.9934000000000003,0,0,0.0,0,8,0.0,Yes,No,Yes,Yes,No,-
+"3,3-dimethylpentane",CCC(C)(C)CC,2.56,100.20499999999998,2.832600000000001,0,0,0.0,2,7,0.0,Yes,No,Yes,Yes,No,-
+methylsulfanylbenzene,CSc1ccccc1,-2.73,124.20799999999996,2.4085,0,1,0.0,1,8,0.0,Yes,No,Yes,Yes,No,-
+"2,3-dimethylbuta-1,3-diene",C=C(C)C(=C)C,0.4,82.14599999999999,2.1386000000000003,0,0,0.0,1,6,0.0,Yes,No,Yes,Yes,No,-
+biphenyl,c1ccc(-c2ccccc2)cc1,-2.7,154.21199999999996,3.353600000000001,0,0,0.0,1,12,0.0,Yes,No,Yes,Yes,No,-
+"N,N-dipropyl(propylsulfanyl)formamide",CCCSC(=O)N(CCC)CCC,-4.13,203.35099999999994,3.3716000000000026,0,2,20.310000000000002,6,13,0.0,Yes,No,Yes,Yes,Yes,-
+caffeine,Cn1c(=O)c2c(ncn2C)n(C)c1=O,-12.64,194.194,-1.0293,0,6,61.82,0,14,0.04,Yes,No,Yes,Yes,No,-
+"1,1,1,2-tetrachloroethane",ClCC(Cl)(Cl)Cl,-1.43,167.85,2.5954000000000006,0,0,0.0,0,6,0.0,Yes,No,Yes,Yes,No,-
+methyl pentanoate,CCCCC(=O)OC,-2.56,116.15999999999998,1.3496000000000001,0,2,26.3,3,8,0.0,Yes,No,Yes,Yes,No,-
+dimethyl sulfate,COS(=O)(=O)OC,-5.1,126.13299999999998,-0.476,0,4,52.60000000000001,2,7,0.0,Yes,No,Yes,Yes,No,-
+diiodomethane,ICI,-2.49,267.835,1.8139,0,0,0.0,0,3,0.0,Yes,No,Yes,Yes,Yes,-
+oct-1-yne,C#CCCCCCC,0.71,110.2,2.5900000000000007,0,0,0.0,4,8,0.0,Yes,No,Yes,Yes,No,-
+ethylsulfanylethane,CCSCC,-1.46,90.191,1.7593999999999999,0,1,0.0,2,5,0.0,Yes,No,Yes,Yes,No,-
+pyrrole,c1cc[nH]c1,-4.78,67.091,1.0147,1,0,15.79,0,5,0.0,Yes,No,Yes,Yes,No,-
+"3-(dimethoxyphosphinothioylsulfanylmethyl)-1,2,3-benzotriazin-4-one",COP(=S)(OC)SCn1nnc2ccccc2c1=O,-10.03,317.33200000000005,1.9994999999999998,0,8,66.24000000000001,5,19,0.0,Yes,No,Yes,Yes,Yes,-
+pirimor,Cc1nc(N(C)C)nc(OC(=O)N(C)C)c1C,-9.41,238.29099999999997,1.2198399999999998,0,5,58.56,2,17,0.005,Yes,No,Yes,Yes,Yes,-
+"2,3-dimethylpentane",CC[C@@H](C)C(C)C,2.52,100.20499999999998,2.6885000000000012,0,0,0.0,2,7,0.0,Yes,No,Yes,Yes,No,-
+1-phenylethanone,CC(=O)c1ccccc1,-4.58,120.15099999999995,1.8892,0,1,17.07,1,9,0.0,Yes,No,Yes,Yes,No,-
+3-phenylpropan-1-ol,OCCCc1ccccc1,-6.92,136.194,1.6115,1,1,20.23,3,10,0.0,Yes,No,Yes,Yes,No,-
+"1,2-dimethoxyethane",COCCOC,-4.84,90.122,0.2792,0,2,18.46,3,6,0.0,Yes,No,Yes,Yes,No,-
+decan-1-ol,CCCCCCCCCCO,-3.64,158.285,3.119400000000002,1,1,20.23,8,11,0.0,Yes,No,Yes,Yes,No,-
+1-butoxy-2-propanol,CCCCOC[C@H](C)O,-5.73,132.203,1.1839,1,2,29.46,5,9,0.0,Yes,No,Yes,Yes,No,-
+naphthalen-2-ol,Oc1ccc2ccccc2c1,-8.11,144.17299999999997,2.5454,1,1,20.23,0,11,0.0,Yes,No,Yes,Yes,No,-
+2-chloropyridine,Clc1ccccn1,-4.39,113.54699999999998,1.7349999999999997,0,1,12.89,0,7,0.0,Yes,No,Yes,Yes,No,-
+pentan-3-one,CCC(=O)CC,-3.41,86.134,1.3755,0,1,17.07,2,6,0.0,Yes,No,Yes,Yes,No,-
+"1,1,1-trifluoropropan-2-ol",C[C@H](O)C(F)(F)F,-4.16,114.06600000000002,0.9295,1,1,20.23,0,7,0.0,Yes,No,Yes,Yes,No,-
+isopropyl acetate,CC(=O)OC(C)C,-2.64,102.133,0.9579,0,2,26.3,1,7,0.0,Yes,No,Yes,Yes,No,-
+"1,1,1-trimethoxyethane",COC(C)(OC)OC,-4.42,120.14799999999998,0.5992999999999999,0,3,27.69,3,8,0.0,Yes,No,Yes,Yes,No,-
+endrin,ClC1=C(Cl)[C@]2(Cl)[C@H]3[C@H]4C[C@H]([C@@H]5O[C@@H]54)[C@H]3[C@@]1(Cl)C2(Cl)Cl,-4.82,380.913,4.481400000000002,0,1,12.53,0,19,0.0,Yes,No,Yes,Yes,Yes,-
+"3,5-dimethylphenol",Cc1cc(C)cc(O)c1,-6.27,122.16699999999997,2.0090399999999997,1,1,20.23,0,9,0.0,Yes,No,Yes,Yes,No,-
+glycerol,OCC(O)CO,-13.43,92.09400000000001,-1.6681000000000001,3,3,60.69,2,6,0.005,Yes,No,Yes,Yes,No,-
+"3,5-dimethylpyridine",Cc1cncc(C)c1,-4.84,107.15599999999998,1.69844,0,1,12.89,0,8,0.0,Yes,No,Yes,Yes,No,-
+chloroethylene,C=CCl,-0.59,62.498999999999995,1.3687,0,0,0.0,0,3,0.0,Yes,No,Yes,Yes,No,-
+2-isopropylsulfanylpropane,CC(C)SC(C)C,-1.21,118.24499999999999,2.5364000000000004,0,1,0.0,2,7,0.0,Yes,No,Yes,Yes,No,-
+"2,5-dimethyltetrahydrofuran",C[C@H]1CC[C@H](C)O1,-2.92,100.16099999999999,1.5737999999999999,0,1,9.23,0,7,0.0,Yes,No,Yes,Yes,No,-
+heptan-1-amine,CCCCCCCN,-3.79,115.22000000000001,1.9155,1,1,26.02,5,8,0.0,Yes,No,Yes,Yes,No,-
+profluralin,CCCN(CC1CC1)c1c([N+](=O)[O-])cc(C(F)(F)F)cc1[N+](=O)[O-],-2.45,347.29300000000006,4.148200000000004,0,5,89.52,7,24,0.0,Yes,No,Yes,Yes,Yes,-
+styrene,C=Cc1ccccc1,-1.24,104.15199999999997,2.3296,0,0,0.0,1,8,0.0,Yes,No,Yes,Yes,No,-
+bromacil,CC[C@H](C)n1c(=O)[nH]c(C)c(Br)c1=O,-9.73,261.11899999999997,1.5785200000000001,1,3,54.86,2,14,0.0,Yes,No,Yes,Yes,Yes,-
+"(1R)-2,2,2-trichloro-1-dimethoxyphosphoryl-ethanol",COP(=O)(OC)[C@@H](O)C(Cl)(Cl)Cl,-12.74,257.437,2.1609000000000003,1,4,55.760000000000005,3,12,0.0,Yes,No,Yes,Yes,Yes,-
+ethyl hexanoate,CCCCCC(=O)OCC,-2.23,144.21399999999997,2.1298000000000004,0,2,26.3,5,10,0.0,Yes,No,Yes,Yes,No,-
+Amitriptyline,CN(C)CCC=C1c2ccccc2CCc2ccccc21,-7.43,277.411,4.168600000000003,0,1,3.24,3,21,0.0,Yes,No,Yes,Yes,Yes,-
+phthalimide,O=C1NC(=O)c2ccccc21,-9.61,147.13299999999998,0.5702,1,2,46.17,0,11,0.015,Yes,No,Yes,Yes,No,-
+"1,2,3,4,7-pentachlorodibenzo-p-dioxin",Clc1ccc2c(c1)Oc1c(Cl)c(Cl)c(Cl)c(Cl)c1O2,-4.15,356.41900000000004,6.8516,0,2,18.46,0,19,0.0,Yes,No,Yes,No,No,-
+2-methylpentan-2-ol,CCCC(C)(C)O,-3.92,102.17699999999998,1.5574,1,1,20.23,2,7,0.0,Yes,No,Yes,Yes,No,-
+fenuron,CN(C)C(=O)Nc1ccccc1,-9.13,164.208,1.7801,1,1,32.34,1,12,0.0,Yes,No,Yes,Yes,No,-
+methyl benzoate,COC(=O)c1ccccc1,-3.92,136.14999999999998,1.4732,0,2,26.3,1,10,0.0,Yes,No,Yes,Yes,No,-
+2-chlorobutane,CC[C@H](C)Cl,0.0,92.569,2.0237,0,0,0.0,1,5,0.0,Yes,No,Yes,Yes,No,-
+2-ethoxyethanol,CCOCCO,-6.69,90.122,0.015200000000000047,1,2,29.46,3,6,0.0,Yes,No,Yes,Yes,No,-
+hexylbenzene,CCCCCCc1ccccc1,-0.04,162.276,3.809400000000003,0,0,0.0,5,12,0.0,Yes,No,Yes,Yes,No,-
+pyridine-3-carbonitrile,N#Cc1cccnc1,-6.75,104.11199999999998,0.9532799999999999,0,2,36.68,0,8,0.0,Yes,No,Yes,Yes,No,-
+2-acetoxyethyl acetate,CC(=O)OCCOC(C)=O,-6.34,146.142,0.11260000000000003,0,4,52.6,3,10,0.0,Yes,No,Yes,Yes,No,-
+methyl 4-nitrobenzoate,COC(=O)c1ccc([N+](=O)[O-])cc1,-6.88,181.147,1.3814,0,4,69.44,2,13,0.005,Yes,No,Yes,Yes,No,-
+dimethoxymethane,COCOC,-2.93,76.095,0.23670000000000002,0,2,18.46,2,5,0.0,Yes,No,Yes,Yes,No,-
