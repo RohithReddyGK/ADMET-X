@@ -1,4 +1,4 @@
-# Bioavailability_Ma.py
+# Caco2_Wang.py
 
 import pandas as pd
 from rdkit import Chem
@@ -57,7 +57,7 @@ def detect_task_type(df: pd.DataFrame, target_col="Y"):
 
 # ---------- Train Model ----------
 def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
-                save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\Bioavailability_Ma.joblib"):
+                save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Caco2_Wang.joblib"):
     df = pd.read_csv(train_csv)
     task_type, units = detect_task_type(df, label_col)
 
@@ -95,13 +95,13 @@ def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="
         print("Evaluation on Test Set (Classification)")
         print(classification_report(y, y_pred))
 
-        # Binary ROC-AUC
+        # Use multi_class='ovr' for multiclass ROC-AUC
         y_prob = model.predict_proba(X)
         try:
-            auc = roc_auc_score(y, y_prob[:, 1])
-            print("ROC-AUC:", auc)
+            auc = roc_auc_score(y, y_prob, multi_class='ovr')
+            print("ROC-AUC (multiclass OVR):", auc)
         except:
-            print("ROC-AUC could not be computed")
+            print("ROC-AUC could not be computed (maybe only one class present in test set)")
     else:
         y_pred = model.predict(X)
         print("Evaluation on Test Set (Regression)")
@@ -109,9 +109,9 @@ def evaluate_model(model, feature_cols, test_csv, smiles_col="Drug", label_col="
         print(f"MAE: {mean_absolute_error(y, y_pred):.4f}")
         print(f"MSE: {mean_squared_error(y, y_pred):.4f}")
 
-# ---------- Predict and Save ----------
-def predict_and_save_binary(model, feature_cols, valid_csv, out_csv, smiles_col="Drug",
-                            task_type="classification", units="-"):
+# ---------- Predict and Save (Multiclass Version) ----------
+def predict_and_save_multiclass(model, feature_cols, valid_csv, out_csv, smiles_col="Drug",
+                                task_type="classification", units="-"):
     df = pd.read_csv(valid_csv)
     desc_list = [compute_descriptors(s) for s in df[smiles_col].astype(str)]
     desc_df = pd.DataFrame(desc_list)
@@ -120,11 +120,13 @@ def predict_and_save_binary(model, feature_cols, valid_csv, out_csv, smiles_col=
     X = df[feature_cols].values
 
     if task_type == "classification":
-        # Probabilities for both classes
+        # Probabilities for all classes
         probs = model.predict_proba(X)
         classes = model.classes_
+
         for i, cls in enumerate(classes):
             df[f"Prob_Class_{cls}"] = probs[:, i]
+
         df["Predicted_Class"] = model.predict(X)
     else:
         df["Prediction"] = model.predict(X)
@@ -142,17 +144,17 @@ def predict_and_save_binary(model, feature_cols, valid_csv, out_csv, smiles_col=
 # ---------- Example Usage ----------
 if __name__ == "__main__":
     model, feature_cols, task_type, units = train_model(
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\train.csv"
+        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Caco2_Wang\train.csv"
     )
     evaluate_model(
         model, feature_cols,
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\test.csv",
+        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Caco2_Wang\test.csv",
         task_type=task_type
     )
-    df_valid = predict_and_save_binary(
+    df_valid = predict_and_save_multiclass(
         model, feature_cols,
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\valid.csv",
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Predictions\Bioavailability_Ma.csv",
+        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Caco2_Wang\valid.csv",
+        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_predictions\Absorption\Caco2_Wang.csv",
         task_type=task_type, units=units
     )
     print(df_valid.head())

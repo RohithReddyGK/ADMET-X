@@ -1,4 +1,4 @@
-# PAMPA_NCATS.py
+# Pgp_Broccatelli.py
 
 import pandas as pd
 from rdkit import Chem, DataStructs
@@ -169,11 +169,11 @@ def predict_and_save(model, valid_csv, out_csv, smiles_col="Drug"):
 
 # ---------- Main ----------
 if __name__ == "__main__":
-    train_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\PAMPA_NCATS\train.csv"
-    test_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\PAMPA_NCATS\test.csv"
-    valid_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\PAMPA_NCATS\valid.csv"
-    save_pred_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Predictions\PAMPA_NCATS.csv"
-    save_model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\PAMPA_NCATS.joblib"
+    train_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Pgp_Broccatelli\train.csv"
+    test_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Pgp_Broccatelli\test.csv"
+    valid_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Pgp_Broccatelli\valid.csv"
+    save_pred_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_pedictions\Absorption\Pgp_Broccatelli.csv"
+    save_model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Pgp_Broccatelli.joblib"
 
     model = train_model(train_path, save_model_path=save_model_path)
     evaluate_model(model, test_path)

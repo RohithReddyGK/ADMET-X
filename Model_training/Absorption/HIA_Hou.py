@@ -57,7 +57,7 @@ def detect_task_type(df: pd.DataFrame, target_col="Y"):
 
 # ---------- Train Model ----------
 def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
-                save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\HIA_Hou.joblib"):
+                save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\HIA_Hou.joblib"):
     df = pd.read_csv(train_csv)
     task_type, units = detect_task_type(df, label_col)
 
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     df_valid = predict_and_save_binary(
         model, feature_cols,
         r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\HIA_Hou\valid.csv",
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Predictions\HIA_Hou.csv",
+        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_predictions\Absorption\HIA_Hou.csv",
         task_type=task_type, units=units
     )
     print(df_valid.head())

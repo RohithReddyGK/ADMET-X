@@ -1,4 +1,4 @@
-# HydrationFreeEnergy_FreeSolv.py
+# Lipophilicity_AstraZeneca.py
 
 import pandas as pd
 from rdkit import Chem, DataStructs
@@ -161,11 +161,11 @@ def predict_and_save(model, valid_csv, out_csv, smiles_col="Drug"):
 
 # ---------- Main ----------
 if __name__ == "__main__":
-    train_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\train.csv"
-    test_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\test.csv"
-    valid_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\valid.csv"
-    save_pred_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Predictions\HydrationFreeEnergy_FreeSolv.csv"
-    save_model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\HydrationFreeEnergy_FreeSolv.joblib"
+    train_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\train.csv"
+    test_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\test.csv"
+    valid_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\valid.csv"
+    save_pred_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_predictions\Absorption\Lipophilicity_AstraZeneca.csv"
+    save_model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Lipophilicity_AstraZeneca.joblib"
 
     model = train_model(train_path, save_model_path=save_model_path)
     evaluate_model(model, test_path)

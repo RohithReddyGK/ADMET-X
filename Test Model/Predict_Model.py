@@ -96,8 +96,8 @@ def predict_dataset(model_path, dataset_path):
 
 # ---------- Run Example ----------
 if __name__ == "__main__":
-    # Update paths to your model and validation dataset
-    model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Models\HydrationFreeEnergy_FreeSolv.joblib"
-    dataset_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\valid.csv"
+
+    model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Solubility_AqSolDB.joblib"
+    dataset_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Solubility_AqSolDB\valid.csv"
 
     predict_dataset(model_path, dataset_path)
