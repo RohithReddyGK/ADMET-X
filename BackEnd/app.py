@@ -119,6 +119,145 @@ def compute_morgan_fingerprint(smiles, radius=2, n_bits=2048):
 def home():
     return "Flask backend is running!"
 
+# ---------- THRESHOLD VALUES ----------
+def categorize_property(prop, value):
+    """
+    Assign color status (green/yellow/red) based on known thresholds.
+    """
+    if value is None:
+        return "gray"  # unknown / no data
+
+    # ---------------- ABSORPTION ----------------
+    if prop == "Bioavailability_Ma":
+        return "green" if value >= 0.5 else "red"
+
+    elif prop == "Caco2_Wang":  # log(cm/s)
+        if value > -5.15:
+            return "green"
+        elif -6 < value <= -5.15:
+            return "yellow"
+        else:
+            return "red"
+
+    elif prop == "HIA_Hou":
+        return "green" if value >= 0.5 else "red"
+
+    elif prop == "HydrationFreeEnergy_FreeSolv":  # kcal/mol
+        if value < -5:
+            return "green"
+        elif -5 <= value <= 0:
+            return "yellow"
+        else:
+            return "red"
+
+    elif prop == "Lipophilicity_AstraZeneca":  # logP
+        return "green" if -0.7 <= value <= 5.0 else "red"
+
+    elif prop == "PAMPA_NCATS":  # cm/s
+        if value >= 1e-5:
+            return "green"
+        elif 1e-6 <= value < 1e-5:
+            return "yellow"
+        else:
+            return "red"
+
+    elif prop == "Pgp_Broccatelli":
+        return "green" if value >= 0.5 else "red"
+
+    elif prop == "Solubility_AqSolDB":  # log(mol/L)
+        if value >= -2:
+            return "green"
+        elif -4 <= value < -2:
+            return "yellow"
+        else:
+            return "red"
+
+    # ---------------- DISTRIBUTION ----------------
+    elif prop == "BBB_MAartins":
+        return "green" if value >= 0.5 else "red"
+
+    elif prop == "PPBR_AZ":  # %
+        if value < 50:
+            return "red"
+        elif 50 <= value <= 90:
+            return "yellow"
+        else:
+            return "green"
+
+    elif prop == "VDss_Lombardo":  # L/kg
+        if value < 0.71:
+            return "red"
+        elif 0.71 <= value <= 5:
+            return "yellow"
+        else:
+            return "green"
+
+    # ---------------- METABOLISM ----------------
+    elif prop in [
+        "CYP1A2_Veith", "CYP2C19_Veith", "CYP2C9_Substrate_CarbonMangels",
+        "CYP2C9_Veith", "CYP2D6_Substrate_CarbonMangels", "CYP2D6_Veith",
+        "CYP3A4_Substrate_CarbonMangels", "CYP3A4_Veith"
+    ]:
+        return "green" if value >= 0.5 else "red"
+
+    # ---------------- EXCRETION ----------------
+    elif prop == "Clearance_Hepatocyte_AZ":  # mL/min/kg
+        if value < 5:
+            return "red"
+        elif 5 <= value <= 30:
+            return "yellow"
+        else:
+            return "green"
+
+    elif prop == "Half_Life_Obach":  # hours
+        if value >= 8:
+            return "green"
+        elif 2 <= value < 8:
+            return "yellow"
+        else:
+            return "red"
+
+    # ---------------- TOXICITY ----------------
+    elif prop == "AMES":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop == "Carcinogens_Lagunin":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop == "ClinTox":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop == "DILI":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop in ["hERG", "herg_central"]:  # µM
+        if value <= 1:
+            return "red"
+        elif 1 < value <= 10:
+            return "yellow"
+        else:
+            return "green"
+
+    elif prop == "hERG_Karim":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop == "LD50_Zhu":  # mg/kg
+        if value > 2000:
+            return "green"
+        elif 50 <= value <= 2000:
+            return "yellow"
+        else:
+            return "red"
+
+    elif prop == "Skin_Reaction":
+        return "red" if value >= 0.5 else "green"
+
+    elif prop in ["Tox21", "Toxcast"]:
+        return "red" if value >= 0.5 else "green"
+
+    return "gray"  # default unknown
+
+# ---------- PREDICT ----------
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
@@ -186,11 +325,14 @@ def predict():
                     for s in SCIENCE
                 ]
 
+                category_value = categorize_property(prop, prediction)
+
                 admet_results[category].append({
                     "property": prop,
                     "prediction": prediction,
-                    "druglikeness": druglikeness,
-                    "units": units
+                    "status": category_value, 
+                    "units": units,
+                    "druglikeness": druglikeness
                 })
 
         response = {

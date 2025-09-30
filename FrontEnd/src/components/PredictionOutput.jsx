@@ -6,32 +6,32 @@ import excretionIcon from "../assets/icons/Excretion.png";
 import toxicityIcon from "../assets/icons/Toxicity.png";
 import descriptorIcon from "../assets/icons/Molecular_Descriptors.png";
 import { FiDownload } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const SCIENTISTS = ["Lipinski", "Ghose", "Veber", "Egan", "Muegge"];
+
+const icons = {
+  Absorption: absorptionIcon,
+  Distribution: distributionIcon,
+  Metabolism: metabolismIcon,
+  Excretion: excretionIcon,
+  Toxicity: toxicityIcon,
+  Descriptors: descriptorIcon,
+};
 
 const PredictionOutput = ({ result }) => {
   if (!result) return null;
 
   const { molImage, radarImage, descriptors, ADMET } = result;
 
-
   // ---------------- CSV Download ----------------
   const downloadReport = () => {
     const rows = [];
-
-    // Title
-    rows.push(["ADMET & Molecular Descriptors Report"]);
+    rows.push(["ADMET & Molecular Descriptors Report"], []);
+    rows.push(["Molecular Descriptors"], ["Descriptor", "Value"]);
+    Object.entries(descriptors).forEach(([key, value]) => rows.push([key, value]));
     rows.push([]);
 
-    // Molecular Descriptors
-    rows.push(["Molecular Descriptors"]);
-    rows.push(["Descriptor", "Value"]);
-    Object.entries(descriptors).forEach(([key, value]) => {
-      rows.push([key, value]);
-    });
-    rows.push([]);
-
-    // ADMET Properties
     Object.entries(ADMET).forEach(([category, props]) => {
       rows.push([`${category} Properties`]);
       rows.push(["Model", "Prediction", ...SCIENTISTS, "Units"]);
@@ -47,10 +47,7 @@ const PredictionOutput = ({ result }) => {
       rows.push([]);
     });
 
-    // Convert to CSV string
     const csvContent = rows.map((r) => r.join(",")).join("\n");
-
-    // Trigger download
     const blob = new Blob([csvContent], { type: "text/csv" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -62,7 +59,7 @@ const PredictionOutput = ({ result }) => {
     window.URL.revokeObjectURL(url);
   };
 
-  // Helper to render descriptors table
+  // ---------------- Render Helpers ----------------
   const renderDescriptors = () => (
     <div className="overflow-x-auto">
       <table className="table-auto w-full border border-blue-200 rounded-lg overflow-hidden">
@@ -87,7 +84,6 @@ const PredictionOutput = ({ result }) => {
     </div>
   );
 
-  // Helper to render property tables (Absorption, Distribution, etc.)
   const renderPropertyTable = (propName) => {
     const propData = ADMET[propName];
     if (!propData) return null;
@@ -112,7 +108,20 @@ const PredictionOutput = ({ result }) => {
                 className="odd:bg-white even:bg-blue-50 dark:odd:bg-gray-700 dark:even:bg-gray-800"
               >
                 <td className="border px-2 py-1">{model.property}</td>
-                <td className="border px-2 py-1">{model.prediction?.toFixed(3) || "-"}</td>
+                <td className="border px-2 py-1 flex items-center gap-2">
+                  <span>{model.prediction?.toFixed(3) || "-"}</span>
+                  <span
+                    className={`w-3 h-3 rounded-full ${
+                      model.status === "green"
+                        ? "bg-green-500"
+                        : model.status === "yellow"
+                        ? "bg-yellow-400"
+                        : model.status === "red"
+                        ? "bg-red-500"
+                        : "bg-gray-400"
+                    }`}
+                  ></span>
+                </td>
                 {model.druglikeness.map((d) => (
                   <td key={d.scientist} className="border px-2 py-1 text-center">{d.value}</td>
                 ))}
@@ -125,6 +134,13 @@ const PredictionOutput = ({ result }) => {
     );
   };
 
+  // ---------------- Motion Variants ----------------
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  // ---------------- Render ----------------
   return (
     <div className="max-w-7xl mx-auto my-6">
       {/* Heading with Download Button */}
@@ -136,79 +152,80 @@ const PredictionOutput = ({ result }) => {
           onClick={downloadReport}
           className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow-md ml-4 flex items-center gap-2"
         >
-          <FiDownload
-            size={20}
-            className="transition-transform duration-200 group-hover:translate-x-1 text-white group-hover:text-yellow-300"
-          />
+          <FiDownload size={20} className="transition-transform duration-200 group-hover:translate-x-1 text-white group-hover:text-yellow-300" />
           Download Report
         </button>
       </div>
 
       {/* Grid for 4x2 layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Row 1: Molecule and Radar */}
-        <div className="flex flex-col justify-center items-center border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
+        {/* Molecular Structure */}
+        <motion.div
+          className="flex flex-col justify-center items-center border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800 max-w-full overflow-x-auto"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
             Molecular Structure
           </h3>
-          <img src={molImage} alt="Molecule" className="max-h-80 rounded-lg mb-3" />
-          <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-300 break-words text-center">
-            SMILES: {result?.smiles}</h1>
-        </div>
-        <div className="flex justify-center items-center border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
+          <img src={molImage} alt="Molecule" className="max-h-80 w-full object-contain rounded-lg mb-3" />
+          <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-300 break-all text-center px-2">
+            SMILES: {result?.smiles}
+          </h1>
+        </motion.div>
+
+        {/* Radar Plot */}
+        <motion.div
+          className="flex justify-center items-center border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
             Radar Plot
           </h3>
           <img src={radarImage} alt="Radar" className="max-h-80 rounded-lg" />
-        </div>
+        </motion.div>
 
-        {/* Row 2: Descriptors and Absorption */}
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
+        {/* Descriptors */}
+        <motion.div
+          className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
             <img src={descriptorIcon} alt="Descriptors" className="w-20 h-20" />
             Molecular Descriptors
           </h3>
           {renderDescriptors()}
-        </div>
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
-          <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-            <img src={absorptionIcon} alt="Absorption" className="w-20 h-20" />
-            Absorption
-          </h3>
-          {renderPropertyTable("Absorption")}
-        </div>
+        </motion.div>
 
-        {/* Row 3: Distribution and Metabolism */}
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
-          <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-            <img src={distributionIcon} alt="Distribution" className="w-20 h-20" />
-            Distribution
-          </h3>
-          {renderPropertyTable("Distribution")}
-        </div>
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
-          <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-            <img src={metabolismIcon} alt="Metabolism" className="w-20 h-20" />
-            Metabolism
-          </h3>
-          {renderPropertyTable("Metabolism")}
-        </div>
-
-        {/* Row 4: Excretion and Toxicity */}
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
-          <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-            <img src={excretionIcon} alt="Excretion" className="w-20 h-20" />
-            Excretion
-          </h3>
-          {renderPropertyTable("Excretion")}
-        </div>
-        <div className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800">
-          <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
-            <img src={toxicityIcon} alt="Toxicity" className="w-20 h-20" />
-            Toxicity
-          </h3>
-          {renderPropertyTable("Toxicity")}
-        </div>
+        {/* ADMET Property Tables */}
+        {Object.keys(ADMET).map((category) => (
+          <motion.div
+            key={category}
+            className="border border-blue-200 rounded-xl shadow-md p-2 bg-white dark:bg-gray-800"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center gap-2">
+              <img src={icons[category]} alt={category} className="w-20 h-20" />
+              {category}
+            </h3>
+            {renderPropertyTable(category)}
+          </motion.div>
+        ))}
       </div>
     </div>
   );
