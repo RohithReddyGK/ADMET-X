@@ -15,7 +15,7 @@ def test_path(category, model_name):
 
 # ---------------- Model & Prediction paths ----------------
 def model_path(category, model_name):
-    return os.path.join(PROJECT_ROOT, "Model_training", category, model_name + ".joblib")
+    return os.path.join(PROJECT_ROOT, "BackEnd", "Models", category, model_name + ".joblib")
 
 def prediction_path(category, model_name):
     return os.path.join(PROJECT_ROOT, "Model_predictions", category, model_name + ".csv")
