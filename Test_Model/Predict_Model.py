@@ -115,8 +115,8 @@ def predict_dataset(model_path, dataset_path):
 
 # ---------- Run Example ----------
 if __name__ == "__main__":
-    category = "Toxicity"
-    model_name = "Skin_Reaction"
+    category = "Absorption"
+    model_name = "Bioavailability_Ma"
 
     # Use the path functions instead of hardcoding
     model_file = model_path(category, model_name)
