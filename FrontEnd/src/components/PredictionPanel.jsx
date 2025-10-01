@@ -185,43 +185,42 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                       {cat}
                     </h4>
                     {Array.isArray(mol.ADMET[cat]) && mol.ADMET[cat].length > 0 ? (
-  <table className="min-w-full border text-sm text-gray-900 dark:text-gray-100 bg-blue-50 dark:bg-gray-900 rounded-lg overflow-hidden">
-    <thead>
-      <tr className="bg-blue-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold">
-        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Property</th>
-        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Prediction</th>
-        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Units</th>
-        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Status</th>
-        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Druglikeness</th>
-      </tr>
-    </thead>
-    <tbody>
-      {mol.ADMET[cat].map((row, i) => (
-        <tr
-          key={i}
-          className={`${
-            i % 2 === 0
-              ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
-              : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
-          }`}
-        >
-          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.property}</td>
-          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
-            {row.prediction?.toFixed?.(3) ?? "N/A"}
-          </td>
-          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.units || "-"}</td>
-          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{statusTag(row.status)}</td>
-          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
-            {Array.isArray(row.druglikeness)
-              ? row.druglikeness.map(d => `${d.scientist}: ${d.value ?? "N/A"}`).join("; ")
-              : "-"}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-                      ) : (
-                        <div className="italic text-gray-600 dark:text-gray-300 p-2">No data</div>
+                      <table className="min-w-full border text-sm text-gray-900 dark:text-gray-100 bg-blue-50 dark:bg-gray-900 rounded-lg overflow-hidden">
+                        <thead>
+                          <tr className="bg-blue-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold">
+                            <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Property</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Prediction</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Units</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Status</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Druglikeness</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {mol.ADMET[cat].map((row, i) => (
+                            <tr
+                              key={i}
+                              className={`${i % 2 === 0
+                                  ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
+                                  : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
+                                }`}
+                            >
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.property}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
+                                {row.prediction?.toFixed?.(3) ?? "N/A"}
+                              </td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.units || "-"}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{statusTag(row.status)}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
+                                {Array.isArray(row.druglikeness)
+                                  ? row.druglikeness.map(d => `${d.scientist}: ${d.value ?? "N/A"}`).join("; ")
+                                  : "-"}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div className="italic text-gray-600 dark:text-gray-300 p-2">No data</div>
                     )}
                   </div>
                 ))}
