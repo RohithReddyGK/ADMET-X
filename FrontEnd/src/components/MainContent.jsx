@@ -71,8 +71,8 @@ const MainContent = () => {
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-600 leading-relaxed">
           ADMET stands for{" "}
-          <strong>Absorption, Distribution, Metabolism, Excretion, and Toxicity</strong>.
-          This AI-Powered model utilizes Graph Neural Networks (GNNs) and Cheminformatics
+          <strong>Absorption, Distribution, Metabolism, Excretion and Toxicity</strong>.
+          This AI-Powered model utilizes Machine Learning Models and Cheminformatics
           to predict these critical drug properties, accelerating drug discovery.
         </p>
       </motion.section>
