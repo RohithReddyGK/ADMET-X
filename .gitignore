@@ -1,15 +1,7 @@
 "environment.yml"  
-<<<<<<< HEAD
-=======
-"example.py"
->>>>>>> 6e609989c6cc02ae18ad23586b68700796b740c5
 
 # Python cache folders
 __pycache__/
 */__pycache__/
 *.py[cod]
-<<<<<<< HEAD
 node_modules
-=======
-node_modules
->>>>>>> 6e609989c6cc02ae18ad23586b68700796b740c5
