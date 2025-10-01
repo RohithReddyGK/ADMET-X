@@ -3,6 +3,7 @@ import DrawMolecule from "./DrawMolecule";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import predictAnimation from "../assets/Predict.json";
+import loadingAnimation from "../assets/Loading.json";
 import PredictionPanel from "./PredictionPanel";
 
 // Relaxed SMILES validation to allow real-world SMILES
@@ -140,15 +141,28 @@ C1=CC=CC=C1 Benzene`
   };
 
   return (
-    <motion.div className="p-4 sm:p-6 max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white">
-        Prediction of ADMET Properties
-      </h1>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="w-full md:w-1/2">
-          <Lottie animationData={predictAnimation} loop className="w-full h-64 sm:h-80 md:h-[400px]" />
+    <>
+      {/* Fullscreen loading overlay */}
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900 bg-opacity-80 backdrop-blur-sm">
+          <Lottie animationData={loadingAnimation} loop className="w-72 h-72 sm:w-96 sm:h-96" />
         </div>
+      )}
+
+     <motion.div
+        className={`p-4 sm:p-6 max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl transition-all duration-300 ${
+          loading ? "pointer-events-none opacity-40" : ""
+        }`}
+      >
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+          Prediction of ADMET Properties
+        </h1>
+
+        <div className="flex flex-col md:flex-row gap-6">
+          <div className="w-full md:w-1/2">
+            {/* Existing decorative animation */}
+            <Lottie animationData={predictAnimation} loop className="w-full h-64 sm:h-80 md:h-[400px]" />
+          </div>
 
         <div className="w-full md:w-1/2">
           <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
@@ -255,6 +269,7 @@ C1=CC=CC=C1 Benzene`
         />
       )}
     </motion.div>
+    </>
   );
 };
 
