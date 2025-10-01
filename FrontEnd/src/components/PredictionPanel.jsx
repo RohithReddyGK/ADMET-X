@@ -3,6 +3,12 @@ import { Collapse, Button, message, Tag } from "antd";
 import Plot from "react-plotly.js";
 import Conclusion from "./Conclusion";
 
+import absorptionIcon from "../assets/icons/Absorption.png";
+import distributionIcon from "../assets/icons/Distribution.png";
+import metabolismIcon from "../assets/icons/Metabolism.png";
+import excretionIcon from "../assets/icons/Excretion.png";
+import toxicityIcon from "../assets/icons/Toxicity.png";
+
 const { Panel } = Collapse;
 
 const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
@@ -83,6 +89,17 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
     }
   };
 
+  const getCategoryIcon = (cat) => {
+    switch (cat.toLowerCase()) {
+      case "absorption": return absorptionIcon;
+      case "distribution": return distributionIcon;
+      case "metabolism": return metabolismIcon;
+      case "excretion": return excretionIcon;
+      case "toxicity": return toxicityIcon;
+      default: return null;
+    }
+  };
+
   return (
     <div className="mt-10 p-4 md:p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow overflow-x-hidden">
       <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Prediction Results</h2>
@@ -98,7 +115,7 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                   {/* SMILES & Name */}
                   <div
                     className="break-words text-gray-900 dark:text-white"
-                    style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}
+                    style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
                     title={`${smi}${name ? ` (${name})` : ""}`}
                   >
                     {smi}{name ? ` (${name})` : ""}
@@ -166,11 +183,16 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
               <div className="mt-4 space-y-4">
                 {mol.ADMET && Object.keys(mol.ADMET).map((cat) => (
                   <div key={cat} className="overflow-x-auto">
-                    <h4 className="font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 px-2 py-1 rounded">{cat}</h4>
+                    <h4 className="text-xl font-bold text-blue-600 bg-white dark:bg-gray-800 px-2 py-1 rounded flex items-center gap-2">
+                      {getCategoryIcon(cat) && (
+                        <img src={getCategoryIcon(cat)} alt={cat} className="w-10 h-10 inline-block" />
+                      )}
+                      {cat}
+                    </h4>
                     {Array.isArray(mol.ADMET[cat]) && mol.ADMET[cat].length > 0 ? (
                       <table className="min-w-full border text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800">
                         <thead>
-                          <tr className="bg-gray-200 dark:bg-gray-700">
+                          <tr className="bg-blue-200 dark:bg-gray-700">
                             <th className="px-2 py-1 border">Property</th>
                             <th className="px-2 py-1 border">Prediction</th>
                             <th className="px-2 py-1 border">Units</th>
@@ -180,7 +202,7 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                         </thead>
                         <tbody>
                           {mol.ADMET[cat].map((row, i) => (
-                            <tr key={i}>
+                            <tr key={i} className={i % 2 === 0 ? "bg-blue-50 dark:bg-gray-900" : "bg-white dark:bg-gray-800"}>
                               <td className="px-2 py-1 border">{row.property}</td>
                               <td className="px-2 py-1 border">{row.prediction?.toFixed?.(3) ?? "N/A"}</td>
                               <td className="px-2 py-1 border">{row.units || "-"}</td>
