@@ -154,53 +154,53 @@ const Conclusion = ({ admet }) => {
       </div>
 
       {/* Spider (Radar) Plot */}
-      <div className="mt-6 w-full h-72 p-4 rounded-lg bg-white shadow-lg">
-        <ResponsiveContainer>
-          <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-            {/* Subtle dashed grid */}
-            <PolarGrid stroke="#CBD5E1" strokeDasharray="3 3" />
+<div className="mt-6 w-full h-72 p-4 rounded-lg bg-white shadow-lg">
+  <ResponsiveContainer>
+    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+      {/* Subtle dashed grid */}
+      <PolarGrid stroke="#CBD5E1" strokeDasharray="3 3" />
+      
+      {/* Category axis labels */}
+      <PolarAngleAxis
+        dataKey="category"
+        stroke="#1F2937"
+        tick={{ fontSize: 12, fontWeight: 500 }}
+      />
+      <PolarRadiusAxis domain={[0, 3]} tick={false} />
 
-            {/* Category axis labels */}
-            <PolarAngleAxis
-              dataKey="category"
-              stroke="#1F2937"
-              tick={{ fontSize: 12, fontWeight: 500 }}
-            />
-            <PolarRadiusAxis domain={[0, 3]} tick={false} />
+      {/* Gradient fill for radar polygon to reflect Good/Moderate/Poor */}
+      <defs>
+        <linearGradient id="admetGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop
+            offset="0%"
+            stopColor={radarData[0].status === "Good" ? "#22C55E" : radarData[0].status === "Moderate" ? "#FACC15" : "#EF4444"}
+            stopOpacity={0.4}
+          />
+          <stop
+            offset="50%"
+            stopColor={radarData[Math.floor(radarData.length / 2)].status === "Good" ? "#22C55E" : radarData[Math.floor(radarData.length / 2)].status === "Moderate" ? "#FACC15" : "#EF4444"}
+            stopOpacity={0.4}
+          />
+          <stop
+            offset="100%"
+            stopColor={radarData[radarData.length - 1].status === "Good" ? "#22C55E" : radarData[radarData.length - 1].status === "Moderate" ? "#FACC15" : "#EF4444"}
+            stopOpacity={0.4}
+          />
+        </linearGradient>
+      </defs>
 
-            {/* Gradient fill for radar polygon to reflect Good/Moderate/Poor */}
-            <defs>
-              <linearGradient id="admetGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop
-                  offset="0%"
-                  stopColor={radarData[0].status === "Good" ? "#22C55E" : radarData[0].status === "Moderate" ? "#FACC15" : "#EF4444"}
-                  stopOpacity={0.4}
-                />
-                <stop
-                  offset="50%"
-                  stopColor={radarData[Math.floor(radarData.length / 2)].status === "Good" ? "#22C55E" : radarData[Math.floor(radarData.length / 2)].status === "Moderate" ? "#FACC15" : "#EF4444"}
-                  stopOpacity={0.4}
-                />
-                <stop
-                  offset="100%"
-                  stopColor={radarData[radarData.length - 1].status === "Good" ? "#22C55E" : radarData[radarData.length - 1].status === "Moderate" ? "#FACC15" : "#EF4444"}
-                  stopOpacity={0.4}
-                />
-              </linearGradient>
-            </defs>
-
-            {/* Radar polygon with gradient fill and soft shadow */}
-            <Radar
-              name="ADMET Status"
-              dataKey="value"
-              stroke="#2563EB"
-              fill="url(#admetGradient)"
-              fillOpacity={0.6}
-              style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))" }}
-            />
-          </RadarChart>
-        </ResponsiveContainer>
-      </div>
+      {/* Radar polygon with gradient fill and soft shadow */}
+      <Radar
+        name="ADMET Status"
+        dataKey="value"
+        stroke="#2563EB"
+        fill="url(#admetGradient)"
+        fillOpacity={0.6}
+        style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))" }}
+      />
+    </RadarChart>
+  </ResponsiveContainer>
+</div>
 
 
 
