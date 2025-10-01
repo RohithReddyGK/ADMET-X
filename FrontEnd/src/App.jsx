@@ -5,7 +5,6 @@ import Lottie from "lottie-react";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
 import Predict from "./components/Predict";
-import PredictionOutput from "./components/PredictionOutput";
 import Footer from "./components/Footer";
 import introAnimation from "./assets/Doctor.json";
 
@@ -46,9 +45,8 @@ function App() {
           >
             <Header />
             <MainContent />
-            <Predict setResult={setResult}/>
+            <Predict />
             <div className="h-8" />
-            {result && <PredictionOutput result={result} />}
             <Footer />
           </motion.div>
         )}
