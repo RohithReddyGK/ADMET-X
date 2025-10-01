@@ -3,7 +3,22 @@ import { Collapse, Button, message, Tag } from "antd";
 import Plot from "react-plotly.js";
 import Conclusion from "./Conclusion";
 
+// Import your icons
+import absorptionIcon from "../assets/icons/absorption.png";
+import distributionIcon from "../assets/icons/distribution.png";
+import metabolismIcon from "../assets/icons/metabolism.png";
+import excretionIcon from "../assets/icons/excretion.png";
+import toxicityIcon from "../assets/icons/toxicity.png";
+
 const { Panel } = Collapse;
+
+const categoryIcons = {
+  Absorption: absorptionIcon,
+  Distribution: distributionIcon,
+  Metabolism: metabolismIcon,
+  Excretion: excretionIcon,
+  Toxicity: toxicityIcon,
+};
 
 const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
   const initialMolecules = results?.molecules || [];
@@ -95,16 +110,13 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
             <Panel
               header={
                 <div className="flex flex-col sm:flex-row sm:justify-between w-full gap-2">
-                  {/* SMILES & Name */}
                   <div
                     className="break-words text-gray-900 dark:text-white"
-                    style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}
+                    style={{ wordBreak: "break-word", overflowWrap: "anywhere" }}
                     title={`${smi}${name ? ` (${name})` : ""}`}
                   >
                     {smi}{name ? ` (${name})` : ""}
                   </div>
-
-                  {/* Buttons */}
                   <div className="flex flex-wrap gap-2 mt-2 sm:mt-0">
                     <Button size="small" onClick={(e) => { e.stopPropagation(); handleCopy(smi, name); }}>
                       Copy Smile Name
@@ -120,7 +132,7 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
               }
               key={idx}
             >
-              {/* Images + Radar Plot Side by Side */}
+              {/* Images + Radar Plot */}
               <div className="flex flex-col md:flex-row gap-4 mb-6 items-center">
                 {mol.molImage && (
                   <img
@@ -162,30 +174,44 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                 </div>
               )}
 
-              {/* ADMET Tables */}
+              {/* ADMET Tables with Icons */}
               <div className="mt-4 space-y-4">
                 {mol.ADMET && Object.keys(mol.ADMET).map((cat) => (
                   <div key={cat} className="overflow-x-auto">
-                    <h4 className="font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 px-2 py-1 rounded">{cat}</h4>
+                    <h4 className="flex items-center gap-2 font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 px-2 py-1 rounded">
+                      {categoryIcons[cat] && (
+                        <img src={categoryIcons[cat]} alt={cat} className="w-10 h-10" />
+                      )}
+                      {cat}
+                    </h4>
                     {Array.isArray(mol.ADMET[cat]) && mol.ADMET[cat].length > 0 ? (
-                      <table className="min-w-full border text-sm text-gray-900 dark:text-white bg-white dark:bg-gray-800">
+                      <table className="min-w-full border text-sm text-gray-900 dark:text-white bg-blue-50 dark:bg-blue-900">
                         <thead>
-                          <tr className="bg-gray-200 dark:bg-gray-700">
-                            <th className="px-2 py-1 border">Property</th>
-                            <th className="px-2 py-1 border">Prediction</th>
-                            <th className="px-2 py-1 border">Units</th>
-                            <th className="px-2 py-1 border">Status</th>
-                            <th className="px-2 py-1 border">Druglikeness</th>
+                          <tr className="bg-blue-200 dark:bg-blue-800 text-gray-900 dark:text-gray-100">
+                            <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">Property</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">Prediction</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">Units</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">Status</th>
+                            <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">Druglikeness</th>
                           </tr>
                         </thead>
                         <tbody>
                           {mol.ADMET[cat].map((row, i) => (
-                            <tr key={i}>
-                              <td className="px-2 py-1 border">{row.property}</td>
-                              <td className="px-2 py-1 border">{row.prediction?.toFixed?.(3) ?? "N/A"}</td>
-                              <td className="px-2 py-1 border">{row.units || "-"}</td>
-                              <td className="px-2 py-1 border">{statusTag(row.status)}</td>
-                              <td className="px-2 py-1 border">
+                            <tr
+                              key={i}
+                              className={`${
+                              i % 2 === 0
+                              ? "bg-blue-100 dark:bg-blue-950"
+                              : "bg-blue-50 dark:bg-blue-900"
+                              }`}
+                            >
+                              <td className="px-2 py-1 border border-blue-300 dark:border-blue-700">{row.property}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-blue-700">
+                                {row.prediction?.toFixed?.(3) ?? "N/A"}
+                              </td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-blue-700">{row.units || "-"}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-blue-700">{statusTag(row.status)}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-blue-700">
                                 {Array.isArray(row.druglikeness)
                                   ? row.druglikeness.map(d => `${d.scientist}: ${d.value ?? "N/A"}`).join("; ")
                                   : "-"}
@@ -194,8 +220,8 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                           ))}
                         </tbody>
                       </table>
-                    ) : (
-                      <div className="italic text-gray-600 dark:text-gray-300 p-2">No data</div>
+                      ) : (
+                        <div className="italic text-gray-600 dark:text-gray-300 p-2">No data</div>
                     )}
                   </div>
                 ))}
