@@ -1,4 +1,4 @@
-# hERG.py (auto handles classification vs regression + units + auto XGBoost type)
+# hERG.py
 
 import os
 import numpy as np
@@ -11,6 +11,7 @@ from rdkit.Chem.rdFingerprintGenerator import GetMorganGenerator
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from xgboost import XGBClassifier, XGBRegressor
 from sklearn.metrics import classification_report, roc_auc_score, mean_squared_error, r2_score
+from paths import train_path, valid_path, test_path, prediction_path, model_path
 
 # ---------- Fingerprint size ----------
 FP_SIZE = 2048
@@ -249,13 +250,20 @@ def evaluate_and_save_predictions(model_meta, test_csv, prediction_csv=None, smi
 
 # ---------- Example run ----------
 if __name__ == "__main__":
-    train_csv = r"D:\VS Code Editor\Major Project\ADMET\admet_data\Toxicity\hERG\train.csv"
-    valid_csv = r"D:\VS Code Editor\Major Project\ADMET\admet_data\Toxicity\hERG\valid.csv"
-    test_csv  = r"D:\VS Code Editor\Major Project\ADMET\admet_data\Toxicity\hERG\test.csv"
+    category = "Toxicity"
+    model_name = "hERG"
 
-    save_model_path = r"D:\VS Code Editor\Major Project\ADMET\Model_training\Toxicity\hERG.joblib"
-    prediction_csv = r"D:\VS Code Editor\Major Project\ADMET\Model_predictions\Toxicity\hERG.csv"
+    train_csv = train_path(category, model_name)
+    valid_csv = valid_path(category, model_name)
+    test_csv  = test_path(category, model_name)
+    save_model_file = model_path(category, model_name)
+    prediction_csv = prediction_path(category, model_name)
 
-    meta = train_model(train_csv, valid_csv, use_descriptors=True, use_fingerprints=True, model_type="xgb",
-                       save_model_path=save_model_path)
+    meta = train_model(
+        train_csv, valid_csv,
+        use_descriptors=True, use_fingerprints=True,
+        model_type="xgb",
+        save_model_path=save_model_file
+    )
+
     evaluate_and_save_predictions(meta, test_csv, prediction_csv)
