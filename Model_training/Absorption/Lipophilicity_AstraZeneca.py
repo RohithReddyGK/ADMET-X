@@ -8,6 +8,7 @@ import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import xgboost as xgb
 import joblib
+from paths import train_path, valid_path, test_path, prediction_path, model_path
 
 # ---------- Morgan Fingerprints ----------
 morgan_gen = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048)
@@ -161,13 +162,16 @@ def predict_and_save(model, valid_csv, out_csv, smiles_col="Drug"):
 
 # ---------- Main ----------
 if __name__ == "__main__":
-    train_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\train.csv"
-    test_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\test.csv"
-    valid_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Lipophilicity_AstraZeneca\valid.csv"
-    save_pred_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_predictions\Absorption\Lipophilicity_AstraZeneca.csv"
-    save_model_path = r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Lipophilicity_AstraZeneca.joblib"
+    category = "Absorption"
+    model_name = "Lipophilicity_AstraZeneca"
 
-    model = train_model(train_path, save_model_path=save_model_path)
-    evaluate_model(model, test_path)
-    df_valid = predict_and_save(model, valid_path, save_pred_path)
+    train_csv = train_path(category, model_name)
+    valid_csv = valid_path(category, model_name)
+    test_csv  = test_path(category, model_name)
+    out_csv   = prediction_path(category, model_name)
+    save_model_file = model_path(category, model_name)
+
+    model = train_model(train_csv, save_model_path=save_model_file)
+    evaluate_model(model, test_csv)
+    df_valid = predict_and_save(model, valid_csv, out_csv)
     print(df_valid.head())

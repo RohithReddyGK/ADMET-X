@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.metrics import classification_report, roc_auc_score, r2_score, mean_absolute_error, mean_squared_error
 import joblib
 import numpy as np
+from paths import train_path, valid_path, test_path, prediction_path, model_path
 
 # ---------- Helper: Compute Molecular Descriptors ----------
 def compute_descriptors(smiles: str) -> dict:
@@ -57,7 +58,7 @@ def detect_task_type(df: pd.DataFrame, target_col="Y"):
 
 # ---------- Train Model ----------
 def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
-                save_model_path=r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_training\Absorption\Bioavailability_Ma.joblib"):
+                save_model_path=None):
     df = pd.read_csv(train_csv)
     task_type, units = detect_task_type(df, label_col)
 
@@ -141,18 +142,16 @@ def predict_and_save_binary(model, feature_cols, valid_csv, out_csv, smiles_col=
 
 # ---------- Example Usage ----------
 if __name__ == "__main__":
-    model, feature_cols, task_type, units = train_model(
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\train.csv"
-    )
-    evaluate_model(
-        model, feature_cols,
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\test.csv",
-        task_type=task_type
-    )
-    df_valid = predict_and_save_binary(
-        model, feature_cols,
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\admet_data\Absorption\Bioavailability_Ma\valid.csv",
-        r"C:\Users\Rohith Reddy G K\Dropbox\ADMET\Model_predictions\Absorption\Bioavailability_Ma.csv",
-        task_type=task_type, units=units
-    )
+    category = "Absorption"
+    model_name = "Bioavailability_Ma"
+
+    train_csv = train_path(category, model_name)
+    valid_csv = valid_path(category, model_name)
+    test_csv  = test_path(category, model_name)
+    out_csv   = prediction_path(category, model_name)
+    save_model_file = model_path(category, model_name)
+
+    model, feature_cols, task_type, units = train_model(train_csv, save_model_path=save_model_file)
+    evaluate_model(model, feature_cols, test_csv, task_type=task_type)
+    df_valid = predict_and_save_binary(model, feature_cols, valid_csv, out_csv, task_type=task_type, units=units)
     print(df_valid.head())
