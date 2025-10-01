@@ -120,17 +120,17 @@ const Conclusion = ({ admet }) => {
 
   return (
     <div className="mt-6 p-4 rounded-lg shadow bg-blue-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
-      <h4 className="font-bold text-lg mb-3">Overall Drug Conclusion</h4>
+      <h4 className="font-bold text-2xl mb-3">Overall Drug Conclusion</h4>
 
       {/* ADMET Property Table with Blue Theme */}
       <div className="overflow-x-auto">
-        <table className="min-w-full border text-sm rounded overflow-hidden">
+        <table className="min-w-full border text-sm text-gray-900 dark:text-gray-100 bg-blue-50 dark:bg-gray-900 rounded-lg overflow-hidden">
           <thead>
-            <tr className="bg-blue-500 dark:bg-blue-700 text-white text-center">
-              <th className="px-3 py-2 border border-blue-600 dark:border-blue-800">
+            <tr className="bg-blue-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold">
+              <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">
                 ADMET Category
               </th>
-              <th className="px-3 py-2 border border-blue-600 dark:border-blue-800">
+              <th className="px-2 py-1 border border-blue-300 dark:border-blue-700">
                 Overall Status
               </th>
             </tr>
@@ -139,12 +139,12 @@ const Conclusion = ({ admet }) => {
             {categoryStatus.map((c, idx) => (
               <tr
                 key={idx}
-                className="odd:bg-blue-50 even:bg-blue-100 dark:odd:bg-blue-900 dark:even:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700"
+                className="odd:bg-blue-50 even:bg-blue-100 dark:odd:bg-gray-900 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
               >
-                <td className="px-3 py-2 border border-blue-200 dark:border-blue-700">
+                <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
                   {c.category}
                 </td>
-                <td className="px-3 py-2 border border-blue-200 dark:border-blue-700 text-center">
+                <td className="px-2 py-1 border border-blue-300 dark:border-gray-700 text-center">
                   <StatusTag status={c.overallStatus} />
                 </td>
               </tr>
