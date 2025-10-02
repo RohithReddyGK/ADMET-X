@@ -4,16 +4,17 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
+  - numpy=1.25.2
+  - scipy=1.9.3
   - scikit-learn
-  - numpy
   - rdkit
   - pandas
   - joblib
   - xgboost
   - flask
+  - flask-cors
   - seaborn
   - matplotlib
-  - flask-cors
 
   - pip:
       - blinker==1.9.0
@@ -44,7 +45,6 @@ dependencies:
       - pytz==2025.2
       - reportlab==4.4.4
       - rlPyCairo==0.4.0
-      - scipy==1.9.3
       - setuptools==78.1.1
       - sip==6.10.0
       - six==1.17.0
