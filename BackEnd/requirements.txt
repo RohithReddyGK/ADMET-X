@@ -1,53 +1,55 @@
-blinker @ file:///C:/b/abs_b1i87khtob/croot/blinker_1737448732095/work
+blinker
 cairocffi==1.7.1
 CairoSVG==2.8.2
 cffi==2.0.0
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1754767332901/work
-click @ file:///C:/b/abs_bbg7qqz4dk/croot/click_1754477951021/work
-colorama @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/colorama_1699472650914/work
-contourpy @ file:///D:/bld/contourpy_1756544609026/work
+charset-normalizer
+click
+colorama
+contourpy
 cssselect2==0.8.0
-cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1733332471406/work
+cycler
 defusedxml==0.7.1
-Flask @ file:///C:/b/abs_28dbmjidmh/croot/flask_1756453142071/work
-flask-cors @ file:///C:/b/abs_ccfhqy4se8/croot/flask-cors_1752860311600/work
-fonttools @ file:///D:/bld/fonttools_1758132474293/work
-freetype-py @ file:///home/conda/feedstock_root/build_artifacts/freetype-py_1650983368720/work
-greenlet @ file:///D:/bld/greenlet_1756752073718/work
-itsdangerous @ file:///C:/b/abs_c4vwgdr5yn/croot/itsdangerous_1716533399914/work
-Jinja2 @ file:///C:/b/abs_920kup4e6u/croot/jinja2_1741711580669/work
-joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1756321760188/work
-kiwisolver @ file:///D:/bld/bld/rattler-build_kiwisolver_1756467571/work
-MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
-matplotlib==3.10.6
+Flask==3.0.3
+flask-cors==4.0.0
+fonttools
+freetype-py
+greenlet
+itsdangerous
+Jinja2
+joblib
+kiwisolver
+MarkupSafe
+matplotlib==3.10.0
 munkres==1.1.4
-numpy @ file:///D:/bld/bld/rattler-build_numpy_1757504921/work/dist/numpy-2.3.3-cp312-cp312-win_amd64.whl#sha256=8396faad196ae7f420d91a6cbeba6feb7ec3669202e23bae1e3ae4d5bb14e721
-packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1745345660/work
-pandas @ file:///D:/bld/pandas_1755778900928/work
-pillow @ file:///D:/bld/bld/rattler-build_pillow_1758208682/work
+numpy==2.1.2
+packaging
+pandas==2.2.3
+pillow
 pycairo==1.23.0
-pycparser==2.23
-pyparsing @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pyparsing_1758436411/work
+pycparser
+pyparsing
 PyQt6==6.7.1
-PyQt6_sip @ file:///C:/b/abs_28s7k4h_hl/croot/pyqt-split_1740498234166/work/pyqt_sip
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work
-pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1742920838005/work
-reportlab @ file:///D:/bld/reportlab_1758296091172/work
-rlPyCairo @ file:///home/conda/feedstock_root/build_artifacts/rlpycairo_1756864152814/work
-scikit-learn @ file:///D:/bld/scikit-learn_1757432769704/work/dist/scikit_learn-1.7.2-cp312-cp312-win_amd64.whl#sha256=a79c4721b833c3c87905b6792c9b30ba95d5d89245b1d06b5b05e81dfbf6b98a
-scipy @ file:///C:/bld/scipy-split_1757681101332/work/dist/scipy-1.16.2-cp312-cp312-win_amd64.whl#sha256=f8bb1213a58001364c9af110dc76d9142ee81c1b1e8ed37edc940fa92f2a2b40
-seaborn @ file:///C:/b/abs_0bv5x0ucxb/croot/seaborn_1749110315600/work
-setuptools==78.1.1
-sip @ file:///C:/b/abs_5cto136kse/croot/sip_1738856220313/work
-six @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_six_1753199211/work
-SQLAlchemy @ file:///D:/bld/sqlalchemy_1754983719536/work
-threadpoolctl @ file:///home/conda/feedstock_root/build_artifacts/threadpoolctl_1741878222898/work
+PyQt6-sip
+python-dateutil
+pytz
+reportlab
+rlPyCairo
+scikit-learn==1.5.2
+scipy==1.14.1
+seaborn==0.13.2
+setuptools
+sip
+six
+SQLAlchemy
+threadpoolctl
 tinycss2==1.4.0
-tornado @ file:///C:/b/abs_7dzpc171lf/croot/tornado_1748956950306/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_typing_extensions_1756220668/work
-tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1742745135198/work
-unicodedata2 @ file:///D:/bld/unicodedata2_1756494484687/work
+tornado
+typing_extensions
+tzdata
+unicodedata2
 webencodings==0.5.1
-Werkzeug @ file:///C:/b/abs_c7bupijx2_/croot/werkzeug_1737448709012/work
-wheel==0.45.1
-xgboost @ file:///home/conda/feedstock_root/build_artifacts/xgboost-split_1758007742820/work/python-package
+Werkzeug
+wheel
+xgboost==2.1.1
+gunicorn
+rdkit-pypi
