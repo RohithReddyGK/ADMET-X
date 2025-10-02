@@ -52,4 +52,4 @@ Werkzeug
 wheel
 xgboost==2.1.1
 gunicorn
-rdkit-pypi
+rdkit-pypi==2023.9.5
