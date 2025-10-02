@@ -22,7 +22,6 @@ dependencies:
       - charset-normalizer==3.4.3
       - click==8.2.1
       - colorama==0.4.6
-      - contourpy==1.3.3
       - cssselect2==0.8.0
       - cycler==0.12.1
       - defusedxml==0.7.1
