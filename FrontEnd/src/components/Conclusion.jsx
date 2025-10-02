@@ -38,7 +38,14 @@ const StatusTag = ({ status }) => {
   );
 };
 
-const Conclusion = ({ admet }) => {
+// Utility to shorten long SMILES for display
+const shortenSmiles = (smi, maxLen = 20) => {
+  if (!smi) return "";
+  if (smi.length <= maxLen) return smi;
+  return smi.slice(0, maxLen / 2) + "..." + smi.slice(-maxLen / 2);
+};
+
+const Conclusion = ({ admet, smiles, drugName }) => {
   if (!admet || Object.keys(admet).length === 0) {
     return (
       <div className="mt-6 p-4 rounded bg-blue-50 dark:bg-blue-900 text-gray-900 dark:text-gray-100">
@@ -118,6 +125,15 @@ const Conclusion = ({ admet }) => {
     };
   }
 
+  // Make a stable-ish unique gradient id per mounted component
+  const gradientId = React.useMemo(
+    () => "admetGradient-" + Math.random().toString(36).slice(2, 9),
+    []
+  );
+
+  // drug label: prefer explicit prop, else admet.smiles, else empty
+  const drugLabel = (smiles && String(smiles)) || admet?.smiles || "";
+
   return (
     <div className="mt-6 p-4 rounded-lg shadow bg-blue-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
       <h4 className="font-bold text-2xl mb-3">Overall Drug Conclusion</h4>
@@ -154,7 +170,8 @@ const Conclusion = ({ admet }) => {
       </div>
 
       {/* Spider (Radar) Plot */}
-      <div className="mt-6 w-full h-72 p-4 rounded-lg bg-white shadow-lg">
+      <div className="mt-6 w-full h-72 p-4 rounded-lg bg-white shadow-lg relative">
+        {/* ResponsiveContainer will size the chart; the parent is 'relative' so we can overlay text inside it */}
         <ResponsiveContainer>
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
             {/* Subtle dashed grid */}
@@ -170,20 +187,38 @@ const Conclusion = ({ admet }) => {
 
             {/* Gradient fill for radar polygon to reflect Good/Moderate/Poor */}
             <defs>
-              <linearGradient id="admetGradient" x1="0" y1="0" x2="1" y2="1">
+              <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
                 <stop
                   offset="0%"
-                  stopColor={radarData[0].status === "Good" ? "#22C55E" : radarData[0].status === "Moderate" ? "#FACC15" : "#EF4444"}
+                  stopColor={
+                    radarData[0]?.status === "Good"
+                      ? "#22C55E"
+                      : radarData[0]?.status === "Moderate"
+                      ? "#FACC15"
+                      : "#EF4444"
+                  }
                   stopOpacity={0.4}
                 />
                 <stop
                   offset="50%"
-                  stopColor={radarData[Math.floor(radarData.length / 2)].status === "Good" ? "#22C55E" : radarData[Math.floor(radarData.length / 2)].status === "Moderate" ? "#FACC15" : "#EF4444"}
+                  stopColor={
+                    radarData[Math.floor(radarData.length / 2)]?.status === "Good"
+                      ? "#22C55E"
+                      : radarData[Math.floor(radarData.length / 2)]?.status === "Moderate"
+                      ? "#FACC15"
+                      : "#EF4444"
+                  }
                   stopOpacity={0.4}
                 />
                 <stop
                   offset="100%"
-                  stopColor={radarData[radarData.length - 1].status === "Good" ? "#22C55E" : radarData[radarData.length - 1].status === "Moderate" ? "#FACC15" : "#EF4444"}
+                  stopColor={
+                    radarData[radarData.length - 1]?.status === "Good"
+                      ? "#22C55E"
+                      : radarData[radarData.length - 1]?.status === "Moderate"
+                      ? "#FACC15"
+                      : "#EF4444"
+                  }
                   stopOpacity={0.4}
                 />
               </linearGradient>
@@ -194,15 +229,36 @@ const Conclusion = ({ admet }) => {
               name="ADMET Status"
               dataKey="value"
               stroke="#2563EB"
-              fill="url(#admetGradient)"
+              fill={`url(#${gradientId})`}
               fillOpacity={0.6}
               style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.2))" }}
             />
+             {/* 👇 Center labels (Drug name + shortened SMILES, both with tooltips) */}
+            {drugName && (
+              <text
+                x="50%"
+                y="47%"  // shift slightly up
+                textAnchor="middle"
+                dominantBaseline="middle"
+                style={{ fontSize: "13px", fontWeight: "700", fill: "#111827" }}
+              >
+                {drugName}
+                <title>{drugName}</title>
+              </text>
+            )}
+            <text
+              x="50%"
+              y={drugName ? "55%" : "50%"} // shift down if name exists
+              textAnchor="middle"
+              dominantBaseline="middle"
+              style={{ fontSize: "11px", fontWeight: "600", fill: "#374151" }}
+            >
+              {shortenSmiles(smiles)}
+              <title>{smiles}</title>
+            </text>
           </RadarChart>
         </ResponsiveContainer>
       </div>
-
-
 
       {/* Market Suitability Message */}
       <div
