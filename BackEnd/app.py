@@ -150,6 +150,10 @@ def categorize_property(prop, value):
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/")
+def index():
+    return "OK", 200
+
 @app.route("/", methods=["GET"])
 def home():
     return "Flask backend running!"
