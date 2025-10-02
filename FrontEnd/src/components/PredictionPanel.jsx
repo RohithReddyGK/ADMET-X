@@ -225,7 +225,7 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                   </div>
                 ))}
               </div>
-              <Conclusion admet={mol.ADMET} />
+              <Conclusion admet={mol.ADMET} smiles={smi} drugName={name} />
             </Panel>
           );
         })}
