@@ -32,4 +32,4 @@ export PORT=${PORT:-5000}
 
 # ---------------- Start Gunicorn ----------------
 echo "Starting Gunicorn on port $PORT..."
-exec gunicorn --bind 0.0.0.0:$PORT app:app
+exec gunicorn -w 4 -b 0.0.0.0:$PORT app:app
