@@ -80,17 +80,14 @@ for category in category_props.keys():
                 model_path = os.path.join(category_path, model_file)
                 try:
                     ADMET_MODELS[category][model_name] = joblib.load(model_path)
+                    print(f"✅ Loaded {model_file}")
                 except Exception as e:
                     print(f"⚠️ Failed to load {model_file}: {e}")
 
 # ---------- THRESHOLD FUNCTION ----------
 def categorize_property(prop, value):
-    """
-    Assign color status (green/yellow/red/gray) based on known thresholds.
-    """
     if value is None:
         return "gray"
-
     try:
         v = float(value)
     except Exception:
@@ -150,13 +147,10 @@ def categorize_property(prop, value):
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
-def index():
-    return "OK", 200
-
+# Health check / root
 @app.route("/", methods=["GET"])
-def home():
-    return "Flask backend running!"
+def status():
+    return jsonify({"status": "Backend is running"}), 200
 
 # ---------- PREDICT ----------
 @app.route("/predict", methods=["POST"])
@@ -193,7 +187,7 @@ def predict():
                         except Exception:
                             value = str(pred)
 
-                    status = categorize_property(prop, pred)
+                    status_val = categorize_property(prop, pred)
                     units = PROPERTY_UNITS.get(prop, "-")
                     druglikeness = [
                         {"scientist": s, "value": "Yes" if pred is not None and float(pred) > 0.5 else "No"}
@@ -203,7 +197,7 @@ def predict():
                     admet_results[category].append({
                         "property": prop,
                         "prediction": value,
-                        "status": status,
+                        "status": status_val,
                         "units": units,
                         "druglikeness": druglikeness
                     })
@@ -223,4 +217,4 @@ def predict():
         return jsonify({"molecules": []}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
