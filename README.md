@@ -1,6 +1,11 @@
-# ADMET-AI: AI-Driven Platform for In-Silico ADMET Prediction
+# An AI-Driven Platform for In-Silico ADMET Prediction
 
-![ADMET-AI Banner](https://raw.githubusercontent.com/yourusername/yourrepo/main/assets/banner.png)
+# ![ADMET-AI Logo](assets/logo.png) ADMET-AI
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
+[![Fly.io](https://img.shields.io/badge/Deployment-Fly.io-purple.svg)](https://fly.io/)
+[![Docker](https://img.shields.io/badge/Docker-Container-blue.svg)](https://www.docker.com/)
 
 **ADMET-AI** is a comprehensive, AI-powered platform for predicting **Absorption, Distribution, Metabolism, Excretion, and Toxicity (ADMET)** properties of drug molecules based on their SMILES representations. It leverages machine learning models to provide accurate drug-likeness assessments and visual insights through radar plots and molecular drawings.
 
