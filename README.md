@@ -140,14 +140,12 @@ Contributions are welcome! To contribute:
 | Sheik Arshad Ibrahim | [GitHub](https://github.com/arshadibrahim882) | [LinkedIn](https://www.linkedin.com/in/sheik-arshad-ibrahim-33a16829a/) |
 | Rohith Reddy G K     | [GitHub](https://github.com/RohithReddyGK)  | [LinkedIn](https://www.linkedin.com/in/rohithreddygk/)  |
 | Sayed Jahangir Ali   | [GitHub](https://github.com/Jahangir-ali-74)      |  -  |
-| Thirumurugan         | [GitHub](https://github.com/thirumuruganmeganath-ops)      |  -     |
+| Thirumurugan M       | [GitHub](https://github.com/thirumuruganmeganath-ops)      |  -     |
 
+<details>
+  <summary><b>License (MIT)</b></summary>
 
-📄 License
-
-This project is licensed under the MIT License
-.
-
+### 📜 MIT License
 
 
 
