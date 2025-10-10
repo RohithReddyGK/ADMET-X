@@ -143,6 +143,16 @@ docker run -p 8080:8080 admet-ai
 
 ---
 
+### 👥 Contributors
+| Name                 | GitHub                                     | LinkedIn                                               |
+| ---------------------| ------------------------------------------ | ------------------------------------------------------ |
+| Sheik Arshad Ibrahim | [GitHub](https://github.com/arshadibrahim882) | [LinkedIn](https://www.linkedin.com/in/sheik-arshad-ibrahim-33a16829a/) |
+| Rohith Reddy G K     | [GitHub](https://github.com/RohithReddyGK)  | [LinkedIn](https://www.linkedin.com/in/rohithreddygk/)  |
+| Sayed Jahangir Ali   | [GitHub](https://github.com/Jahangir-ali-74)      |  -  |
+| Thirumurugan M       | [GitHub](https://github.com/thirumuruganmeganath-ops)      |  -     |
+
+---
+
 ## 🧪 Contribution
 
 Contributions are welcome! To contribute:
@@ -154,12 +164,4 @@ Contributions are welcome! To contribute:
 
 ---
 
-### 👥 Contributors
-| Name                 | GitHub                                     | LinkedIn                                               |
-| ---------------------| ------------------------------------------ | ------------------------------------------------------ |
-| Sheik Arshad Ibrahim | [GitHub](https://github.com/arshadibrahim882) | [LinkedIn](https://www.linkedin.com/in/sheik-arshad-ibrahim-33a16829a/) |
-| Rohith Reddy G K     | [GitHub](https://github.com/RohithReddyGK)  | [LinkedIn](https://www.linkedin.com/in/rohithreddygk/)  |
-| Sayed Jahangir Ali   | [GitHub](https://github.com/Jahangir-ali-74)      |  -  |
-| Thirumurugan M       | [GitHub](https://github.com/thirumuruganmeganath-ops)      |  -     |
-
-
+## 🌟If you liked our project, git it a ⭐.
