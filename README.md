@@ -26,22 +26,6 @@
 
 ---
 
-## 📖 Table of Contents
-
-- [Project Overview](#-project-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Installation](#-installation-local-setup)
-- [Deployment](#-deployment)
-- [Usage](#-usage)
-- [Contributors](#-contributors)
-- [Contribution](#-contribution)
-- [License](#-license)
-- [Security](#-security)
-
----
-
 ## 🚀 Project Overview
 
 ADMET-AI aims to accelerate early-stage drug discovery by providing in-silico predictions of pharmacokinetics and pharmacodynamics, reducing the need for extensive laboratory experiments.  
