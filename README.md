@@ -67,8 +67,24 @@ Key highlights:
 ---
 
 ### 📁 Project Files & Navigation
+```bash
+ADMET-AI/
+├── BackEnd/                # Flask backend code, app.py, utils, Models folder
+├── FrontEnd/               # React frontend code
+├── Model_predictions/      # Predicted ADMET results (optional storage)
+├── Model_training/         # Scripts and notebooks for training ML models
+├── Test_Model/             # Unit tests or test scripts for models
+├── admet_data/             # Raw datasets used for training/testing
+├── LICENSE                 # MIT License file
+├── README.md               # Project README with badges, instructions, contributors
+├── SECURITY.md             # Security policy and responsible disclosure
+├── example.py              # Example script demonstrating usage
+├── package-lock.json       # Frontend dependency lock file
+├── package.json            # Frontend dependency definitions
+└── paths.py                # Paths configuration for project directories/files
+```
 
-
+---
 
 ## ⚙️ Installation (Local Setup)
 
@@ -125,6 +141,8 @@ docker run -p 8080:8080 admet-ai
 - View interactive ADMET radar plots and molecular images.
 - Optionally, download all results as CSV.
 
+---
+
 ## 🧪 Contribution
 
 Contributions are welcome! To contribute:
@@ -133,6 +151,8 @@ Contributions are welcome! To contribute:
 - Make changes and commit: git commit -m "Add new feature"
 - Push to branch: git push origin feature-name
 - Open a Pull Request
+
+---
 
 ### 👥 Contributors
 | Name                 | GitHub                                     | LinkedIn                                               |
