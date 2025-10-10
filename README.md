@@ -14,7 +14,8 @@
   <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-React-orange.svg" alt="Vite + React"></a>
   <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Container-blue.svg" alt="Docker"></a>
   <a href="https://fly.io/"><img src="https://img.shields.io/badge/Deployment-Fly.io-purple.svg" alt="Fly.io"></a>
-  
+</p>
+<p align="center">
   <!-- Libraries/Tools -->
   <a href="https://www.rdkit.org/"><img src="https://img.shields.io/badge/RDKit-Chemistry-green.svg" alt="RDKit"></a>
   <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-Backend-orange.svg" alt="Flask"></a>
