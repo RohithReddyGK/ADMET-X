@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 style="font-size:3em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
+  <h1 style="font-size:10em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
 </p>
 
 <p align="center">
