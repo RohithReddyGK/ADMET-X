@@ -1,5 +1,5 @@
 <p align="center">
-  <h1>An AI-Driven Platform for In-Silico ADMET Prediction</h1>
+  <h1 style="font-size:3em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
 </p>
 
 <p align="center">
@@ -125,11 +125,11 @@ docker run -p 8080:8080 admet-ai
 ## 🧪 Contribution
 
 Contributions are welcome! To contribute:
--Fork the repository
--Create a branch: git checkout -b feature-name
--Make changes and commit: git commit -m "Add new feature"
--Push to branch: git push origin feature-name
--Open a Pull Request
+- Fork the repository
+- Create a branch: git checkout -b feature-name
+- Make changes and commit: git commit -m "Add new feature"
+- Push to branch: git push origin feature-name
+- Open a Pull Request
 
 
 
