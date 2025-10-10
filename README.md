@@ -117,10 +117,10 @@ docker run -p 8080:8080 admet-ai
 
 ## 🖥 Usage
 
--Input molecule SMILES via text, file, draw, or example.
--Click Predict.
--View interactive ADMET radar plots and molecular images.
--Optionally, download all results as CSV.
+- Input molecule SMILES via text, file, draw, or example.
+- Click Predict.
+- View interactive ADMET radar plots and molecular images.
+- Optionally, download all results as CSV.
 
 ## 🧪 Contribution
 
