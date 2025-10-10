@@ -29,14 +29,15 @@
 
 ## 🚀 Project Overview
 
-ADMET-AI aims to accelerate early-stage drug discovery by providing in-silico predictions of pharmacokinetic and toxicity properties, reducing the need for extensive laboratory experiments.  
+ADMET-AI aims to accelerate early-stage drug discovery by providing in-silico predictions of pharmacokinetics and pharmacodynamics, reducing the need for extensive laboratory experiments.  
 
 Key highlights:
 
-- Batch and single SMILES prediction
-- Interactive radar plots for ADMET visualization
-- Toxicity prediction integrated with traditional ADME properties
-- Support for drawing molecules and uploading files
+- Batch and single SMILES prediction.
+- Downlodable report via CSV.
+- Interactive radar plots for ADMET visualization.
+- Toxicity prediction integrated with traditional ADME properties.
+- Support for drawing molecules and uploading files.
 - Ready-to-deploy with Docker and Fly.io
 
 ---
@@ -46,10 +47,10 @@ Key highlights:
 - **SMILES Input Options**: Text input, file upload (.txt/.csv), drawing molecules, or example molecules.
 - **ADMET Predictions**:
   - Absorption: Bioavailability, Caco2, HIA, etc.
-  - Distribution: BBB, PPBR, VDss
-  - Metabolism: CYP450 enzyme interactions
-  - Excretion: Clearance, Half-Life
-  - Toxicity: AMES, Carcinogenicity, hERG, LD50, and more
+  - Distribution: BBB, PPBR, etc.
+  - Metabolism: CYP450 enzyme, etc.
+  - Excretion: Clearance, Half-Life, etc.
+  - Toxicity: AMES, Carcinogenicity, hERG, LD50, and more.
 - **Interactive Visualization**: Molecule images, radar plots, and color-coded property status.
 - **Export Results**: Download predictions as a CSV file.
 - **Local & Online Deployment**: Works both locally and via Fly.io deployment.
@@ -59,9 +60,9 @@ Key highlights:
 ## 🛠 Tech Stack
 
 - **Backend**: Python, Flask, Joblib, Flask-CORS
-- **Frontend**: React, TailwindCSS, Framer Motion, Lottie
+- **Frontend**: Vite-React, TailwindCSS, Framer-Motion, Lottie
 - **AI/ML Models**: Custom trained models for ADMET prediction
-- **Deployment**: Docker, Fly.io
+- **Deployment**: Docker, Fly.io and Vercel
 - **Utilities**: RDKit, ChemUtils, Plotting modules
 
 ---
@@ -84,8 +85,11 @@ conda activate admet_env
 ```bash
 python app.py
 ```
-**Backend will run at: http://127.0.0.1:8080**
-**Test endpoint: http://127.0.0.1:8080/ → should return "Backend is running."**
+### **Running localhosts**
+```bash
+Backend will run at: http://127.0.0.1:8080
+Test endpoint: http://127.0.0.1:8080/ → should return "Backend is running."
+```
 
 ### **4. Setup FrontEnd**
 ```bash
