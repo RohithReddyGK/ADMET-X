@@ -1,6 +1,4 @@
-<p align="center">
-  <h1 style="font-size:10em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
-</p>
+# An AI-Driven Platform for In-Silico ADMET Prediction
 
 <p align="center">
   <img width="200" height="200" alt="ADMET-AI Logo" src="https://github.com/user-attachments/assets/af4851f7-a076-486d-9cce-06365cfe0bb6" />
