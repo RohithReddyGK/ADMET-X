@@ -2,7 +2,7 @@
 
 # ![ADMET-AI Logo](assets/logo.png) ADMET-AI
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Fly.io](https://img.shields.io/badge/Deployment-Fly.io-purple.svg)](https://fly.io/)
 [![Docker](https://img.shields.io/badge/Docker-Container-blue.svg)](https://www.docker.com/)
