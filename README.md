@@ -1,7 +1,7 @@
 # An AI-Driven Platform for In-Silico ADMET Prediction
 
 <p align="center">
-  <img src="./FrontEnd/src/assets/logo.png" alt="ADMET-AI Logo" width="150"/>
+  <img width="1024" height="1024" alt="ADMET-AI Logo" src="https://github.com/user-attachments/assets/af4851f7-a076-486d-9cce-06365cfe0bb6" />
 </p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
