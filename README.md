@@ -1,25 +1,26 @@
-# An AI-Driven Platform for In-Silico ADMET Prediction
+<div align="center">
 
-<p align="center">
+  <!-- Title -->
+  <h1 style="font-size: 3em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
+
+  <!-- Logo -->
   <img width="200" height="200" alt="ADMET-AI Logo" src="https://github.com/user-attachments/assets/af4851f7-a076-486d-9cce-06365cfe0bb6" />
-</p>
 
-<p align="center">
-  <!-- License & Core -->
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue.svg" alt="Python"></a>
-  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-18.2.0-blue.svg" alt="React"></a>
-  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-React-orange.svg" alt="Vite + React"></a>
-  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Container-blue.svg" alt="Docker"></a>
-  <a href="https://fly.io/"><img src="https://img.shields.io/badge/Deployment-Fly.io-purple.svg" alt="Fly.io"></a>
-</p>
-<p align="center">
-  <!-- Libraries/Tools -->
-  <a href="https://www.rdkit.org/"><img src="https://img.shields.io/badge/RDKit-Chemistry-green.svg" alt="RDKit"></a>
-  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-Backend-orange.svg" alt="Flask"></a>
-  <a href="https://framer.com/motion/"><img src="https://img.shields.io/badge/FramerMotion-Animation-pink.svg" alt="Framer Motion"></a>
-  <a href="https://lottiefiles.com/"><img src="https://img.shields.io/badge/Lottie-Animations-blue.svg" alt="Lottie"></a>
-</p>
+  <!-- Badges -->
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue.svg" alt="Python"></a>
+    <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-18.2.0-blue.svg" alt="React"></a>
+    <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-React-orange.svg" alt="Vite + React"></a>
+    <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Container-blue.svg" alt="Docker"></a>
+    <a href="https://fly.io/"><img src="https://img.shields.io/badge/Deployment-Fly.io-purple.svg" alt="Fly.io"></a>
+    <a href="https://www.rdkit.org/"><img src="https://img.shields.io/badge/RDKit-Chemistry-green.svg" alt="RDKit"></a>
+    <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-Backend-orange.svg" alt="Flask"></a>
+    <a href="https://framer.com/motion/"><img src="https://img.shields.io/badge/FramerMotion-Animation-pink.svg" alt="Framer Motion"></a>
+    <a href="https://lottiefiles.com/"><img src="https://img.shields.io/badge/Lottie-Animations-blue.svg" alt="Lottie"></a>
+  </p>
+
+</div>
 
 **ADMET-AI** is a comprehensive, AI-powered platform for predicting **Absorption, Distribution, Metabolism, Excretion, and Toxicity (ADMET)** properties of drug molecules based on their SMILES representations. It leverages machine learning models to provide accurate drug-likeness assessments and visual insights through radar plots and molecular drawings.
 
