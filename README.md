@@ -66,6 +66,10 @@ Key highlights:
 
 ---
 
+### 📁 Project Files & Navigation
+
+
+
 ## ⚙️ Installation (Local Setup)
 
 ### **1. Clone the repository**
@@ -129,6 +133,21 @@ Contributions are welcome! To contribute:
 - Make changes and commit: git commit -m "Add new feature"
 - Push to branch: git push origin feature-name
 - Open a Pull Request
+
+### 👥 Contributors
+| Name                 | GitHub                                     | LinkedIn                                               |
+| ---------------------| ------------------------------------------ | ------------------------------------------------------ |
+| Sheik Arshad Ibrahim | [GitHub](https://github.com/arshadibrahim882) | [LinkedIn](https://www.linkedin.com/in/sheik-arshad-ibrahim-33a16829a/) |
+| Rohith Reddy G K     | [GitHub](https://github.com/RohithReddyGK)  | [LinkedIn](https://www.linkedin.com/in/rohithreddygk/)  |
+| Sayed Jahangir Ali   | [GitHub](https://github.com/Jahangir-ali-74)      |  -  |
+| Thirumurugan         | [GitHub](https://github.com/thirumuruganmeganath-ops)      |  -     |
+
+
+📄 License
+
+This project is licensed under the MIT License
+.
+
 
 
 
