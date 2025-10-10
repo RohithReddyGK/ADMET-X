@@ -54,7 +54,7 @@ ADMET-AI is designed with security and privacy in mind. Key considerations inclu
   - Framer-Motion
   - Lottie
 
-> We recommend checking [Snyk](https://snyk.io/) or [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) to monitor dependencies for vulnerabilities.
+> We recommend checking [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) to monitor dependencies for vulnerabilities.
 
 ---
 
