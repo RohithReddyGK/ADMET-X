@@ -1,6 +1,7 @@
 # An AI-Driven Platform for In-Silico ADMET Prediction
 
-# ![ADMET-AI Logo](FrontEnd/src/assets/ADMET-AI Logo.png) ADMET-AI
+# ![ADMET-AI Logo](![Uploading ADMET-AI Logo.png…]()
+) ADMET-AI
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
