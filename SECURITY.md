@@ -1,11 +1,11 @@
-# Security Policy for ADMET-AI
+# Security Policy for ADMET-X
 
 ## 🚨 Reporting a Vulnerability
 
-If you discover a security vulnerability in ADMET-AI, please **report it responsibly**:
+If you discover a security vulnerability in ADMET-X, please **report it responsibly**:
 
 - **Email**: gkrohithreddy@gmail.com   
-- **Subject Line**: `[ADMET-AI Security] Vulnerability Report`
+- **Subject Line**: `[ADMET-X Security] Vulnerability Report`
 
 Please include:
 
@@ -20,7 +20,7 @@ We will acknowledge your report within **48 hours** and aim to provide a fix or 
 
 ## 🛡 Security Overview
 
-ADMET-AI is designed with security and privacy in mind. Key considerations include:
+ADMET-X is designed with security and privacy in mind. Key considerations include:
 
 - **Data Handling**: SMILES input is processed **locally or on the deployed backend**. No data is shared externally.  
 - **Dependencies**: All Python and JavaScript dependencies are regularly updated to prevent known vulnerabilities.  
@@ -70,4 +70,4 @@ By reporting security vulnerabilities responsibly, you help us protect the platf
 
 ---
 
-*Thank you for helping make ADMET-AI safe and secure!*
+*Thank you for helping make ADMET-X safe and secure!*
