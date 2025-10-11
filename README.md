@@ -4,7 +4,8 @@
   <h1 style="font-size: 10em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
 
   <!-- Logo -->
-  <img width="200" height="200" alt="ADMET-AI Logo" src="https://github.com/user-attachments/assets/af4851f7-a076-486d-9cce-06365cfe0bb6" />
+  <img width="200" height="200" alt="ADMET-AI Logo" src="https://github.com/user-attachments/assets/5fe01a51-fec8-441e-a973-11cfdee642a1"/>
+
 
   <!-- Badges -->
   <p>
@@ -22,13 +23,13 @@
 
 </div>
 
-**ADMET-AI** is a comprehensive, AI-powered platform for predicting **Absorption, Distribution, Metabolism, Excretion, and Toxicity (ADMET)** properties of drug molecules based on their SMILES representations. It leverages machine learning models to provide accurate drug-likeness assessments and visual insights through radar plots and molecular drawings.
+**ADMET-X** is a comprehensive, AI-powered platform for predicting **Absorption, Distribution, Metabolism, Excretion, and Toxicity (ADMET)** properties of drug molecules based on their SMILES representations. It leverages machine learning models to provide accurate drug-likeness assessments and visual insights through radar plots and molecular drawings.
 
 ---
 
 ## 🚀 Project Overview
 
-ADMET-AI aims to accelerate early-stage drug discovery by providing in-silico predictions of pharmacokinetics and pharmacodynamics, reducing the need for extensive laboratory experiments.  
+ADMET-X aims to accelerate early-stage drug discovery by providing in-silico predictions of pharmacokinetics and pharmacodynamics, reducing the need for extensive laboratory experiments.  
 
 Key highlights:
 
@@ -68,7 +69,7 @@ Key highlights:
 
 ### 📁 Project Files & Navigation
 ```bash
-ADMET-AI/
+ADMET-X/
 ├── BackEnd/                # Flask backend code, app.py, utils, Models folder
 ├── FrontEnd/               # React frontend code
 ├── Model_predictions/      # Predicted ADMET results (optional storage)
@@ -90,7 +91,7 @@ ADMET-AI/
 
 ### **1. Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ADMET.git
+git clone https://github.com/yourusername/ADMET-X.git
 cd ADMET/BackEnd
 ```
 
