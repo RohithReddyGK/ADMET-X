@@ -15,7 +15,7 @@ const Footer = () => {
     >
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="font-bold text-sm sm:text-base text-center sm:text-left dark:text-gray-300">
-          © {new Date().getFullYear()} ADMET-AI Platform — All rights reserved.
+          © {new Date().getFullYear()} ADMET-X Platform — All rights reserved.
         </p>
         <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-4xl sm:text-5xl">
           <FaReact className="text-cyan-500 dark:text-cyan-400 hover:scale-110 transition" title="React" />

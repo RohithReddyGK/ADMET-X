@@ -4,6 +4,7 @@ import Plot from "react-plotly.js";
 import Conclusion from "./Conclusion";
 
 // Import your icons
+import molecularDescriptorIcon from "../assets/icons/molecular_descriptors.png";
 import absorptionIcon from "../assets/icons/absorption.png";
 import distributionIcon from "../assets/icons/distribution.png";
 import metabolismIcon from "../assets/icons/metabolism.png";
@@ -52,6 +53,13 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
     const name = molData.name || "";
 
     const csvRows = ["SMILES,Drug Name,Category,Property,Prediction,Units,Status,Druglikeness"];
+
+    // Add Molecular Descriptors
+    if (molData.descriptors) {
+      Object.entries(molData.descriptors).forEach(([desc, value]) => {
+        csvRows.push(`${smi},${name},Molecular Descriptor,${desc},${value},-,-,-`);
+      });
+    }
 
     if (molData.ADMET) {
       Object.keys(molData.ADMET).forEach((cat) => {
@@ -174,6 +182,38 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                 </div>
               )}
 
+              {/* Molecular Descriptors Table */}
+              {mol.descriptors && Object.keys(mol.descriptors).length > 0 && (
+                <div className="mt-4 overflow-x-auto">
+                  <h4 className="flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-white bg-white dark:bg-gray-600 px-2 py-1 rounded">
+                    <img src={molecularDescriptorIcon} alt="Molecular Descriptors" className="w-12 h-12" />
+                    Molecular Descriptors
+                  </h4>
+                  <table className="min-w-full border text-sm text-gray-900 dark:text-gray-100 bg-blue-50 dark:bg-gray-900 rounded-lg overflow-hidden">
+                    <thead>
+                      <tr className="bg-blue-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-semibold">
+                        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Descriptor</th>
+                        <th className="px-2 py-1 border border-blue-300 dark:border-gray-700">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(mol.descriptors).map(([desc, value], i) => (
+                        <tr
+                          key={i}
+                          className={`${i % 2 === 0
+                            ? "bg-blue-100 dark:bg-gray-800"
+                            : "bg-blue-50 dark:bg-gray-700"
+                            }`}
+                        >
+                          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{desc}</td>
+                          <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
               {/* ADMET Tables with Icons */}
               <div className="mt-4 space-y-4">
                 {mol.ADMET && Object.keys(mol.ADMET).map((cat) => (
@@ -200,8 +240,8 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                             <tr
                               key={i}
                               className={`${i % 2 === 0
-                                  ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
-                                  : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
+                                ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
+                                : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
                                 }`}
                             >
                               <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.property}</td>

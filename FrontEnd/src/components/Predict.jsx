@@ -77,7 +77,7 @@ C1=CC=CC=C1 Benzene`
     try {
       setLoading(true);
 
-      const resp = await fetch("http://127.0.0.1:5000/predict", {
+      const resp = await fetch("http://127.0.0.1:8080/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ smiles: processedInput.map((i) => i.smiles) }),
@@ -237,7 +237,7 @@ C1=CC=CC=C1 Benzene`
             <div className="flex flex-wrap gap-2 justify-center md:justify-start mt-2">
               <button
                 onClick={handlePredict}
-                className={`bg-green-600 text-white px-6 py-2 rounded-lg ${loading ? "opacity-50 cursor-not-allowed" : ""
+                className={`bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 ${loading ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 disabled={loading}
               >
@@ -247,7 +247,7 @@ C1=CC=CC=C1 Benzene`
               {results?.molecules?.length > 0 && (
                 <button
                   onClick={downloadAllCSV}
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg"
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
                 >
                   Download All CSV
                 </button>

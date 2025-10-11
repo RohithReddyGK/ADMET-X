@@ -1,4 +1,4 @@
-import logo from "../assets/ADMET-AI Logo.png";
+import logo from "../assets/ADMET-X.png";
 import ThemeToggle from "./ThemeToggle";
 import { motion } from "framer-motion";
 
