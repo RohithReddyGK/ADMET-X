@@ -59,6 +59,13 @@ Key highlights:
 
 ---
 
+## 📊 Datasets
+
+- **TDC**(Therapeutics Data Commons): [TDC](https://tdcommons.ai/single_pred_tasks/overview/) - Used for Model -> training, testing and validating.
+- **PubChem**: [PubChem](https://pubchem.ncbi.nlm.nih.gov/) - Used for Batch Predictions.
+
+---
+
 ## 🛠 Tech Stack
 
 - **Backend**: Python, Flask, Joblib, Flask-CORS
