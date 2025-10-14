@@ -4,12 +4,12 @@ import Plot from "react-plotly.js";
 import Conclusion from "./Conclusion";
 
 // Import your icons
-import molecularDescriptorIcon from "../assets/icons/molecular_descriptors.png";
-import absorptionIcon from "../assets/icons/absorption.png";
-import distributionIcon from "../assets/icons/distribution.png";
-import metabolismIcon from "../assets/icons/metabolism.png";
-import excretionIcon from "../assets/icons/excretion.png";
-import toxicityIcon from "../assets/icons/toxicity.png";
+import molecularDescriptorIcon from "../assets/icons/Molecular_Descriptors.png";
+import absorptionIcon from "../assets/icons/Absorption.png";
+import distributionIcon from "../assets/icons/Distribution.png";
+import metabolismIcon from "../assets/icons/Metabolism.png";
+import excretionIcon from "../assets/icons/Excretion.png";
+import toxicityIcon from "../assets/icons/Toxicity.png";
 
 const { Panel } = Collapse;
 

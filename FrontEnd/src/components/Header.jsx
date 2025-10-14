@@ -13,7 +13,7 @@ function Header() {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
         <img
           src={logo}
-          alt="ADMET-AI Logo"
+          alt="ADMET-X Logo"
           className="w-20 h-20 rounded-full mb-2 md:mb-0"
         />
         <h1 className="text-2xl md:text-4xl text-center md:text-left font-bold text-gray-800 dark:text-white">
