@@ -8,8 +8,12 @@ dependencies:
   - rdkit
   - scikit-learn
   - joblib
+  - xgboost
   - pandas
   - numpy
   - reportlab
   - matplotlib
   - seaborn
+  - pip
+  - pip:
+      - gunicorn
