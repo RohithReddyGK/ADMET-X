@@ -145,7 +145,7 @@ def categorize_property(prop, value):
 
 # ---------- FLASK APP ----------
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins":"*"}})
 
 # Health check / root
 @app.route("/", methods=["GET"])
