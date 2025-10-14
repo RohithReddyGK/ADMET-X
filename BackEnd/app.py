@@ -1,14 +1,23 @@
-from flask import Flask, request, jsonify 
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
+import sys
 import joblib
+
+# ---------------- Deployment-safe paths ----------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Ensure modules are importable
+sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR, "descriptors"))
+sys.path.append(os.path.join(BASE_DIR, "utils"))
 
 from utils.chem_utils import compute_descriptors, mol_to_image
 from utils.plotting import radar_plot_image
 from utils.prediction_utils import safe_predict
 
 # ---------- CONFIG ----------
-MODELS_DIR = "Models"
+MODELS_DIR = os.path.join(BASE_DIR, "Models")
 SCIENCE = ["Lipinski", "Ghose", "Veber", "Egan", "Muegge"]
 
 PROPERTY_UNITS = {
@@ -70,6 +79,8 @@ category_props = {
 
 # ---------- LOAD MODELS ----------
 ADMET_MODELS = {}
+print("Loading ADMET models from:", MODELS_DIR)
+
 for category in category_props.keys():
     category_path = os.path.join(MODELS_DIR, category)
     if os.path.isdir(category_path):
@@ -80,9 +91,9 @@ for category in category_props.keys():
                 model_path = os.path.join(category_path, model_file)
                 try:
                     ADMET_MODELS[category][model_name] = joblib.load(model_path)
-                    print(f"✅ Loaded {model_file}")
+                    print(f"✅ Loaded {model_file} for category {category}")
                 except Exception as e:
-                    print(f"⚠️ Failed to load {model_file}: {e}")
+                    print(f"⚠️ Failed to load {model_file} at {model_path}: {e}")
 
 # ---------- THRESHOLD FUNCTION ----------
 def categorize_property(prop, value):
@@ -145,7 +156,7 @@ def categorize_property(prop, value):
 
 # ---------- FLASK APP ----------
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins":"*"}})
 
 # Health check / root
 @app.route("/", methods=["GET"])
@@ -167,14 +178,17 @@ def predict():
 
         molecules = []
         for smi in smiles_list:
+            # ---------- Descriptors ----------
             descriptors = compute_descriptors(smi) or {
                 "MolWt": 0, "LogP": 0, "H-Donors": 0, "H-Acceptors": 0,
                 "TPSA": 0, "RotBonds": 0, "Atoms": 0
             }
+            print(f"Descriptors for {smi}: {descriptors}")
 
             mol_image = mol_to_image(smi) or ""
             radar_image = radar_plot_image(descriptors) or ""
 
+            # ---------- ADMET Predictions ----------
             admet_results = {}
             for category, props in category_props.items():
                 admet_results[category] = []

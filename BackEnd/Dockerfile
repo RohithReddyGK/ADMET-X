@@ -6,17 +6,13 @@ WORKDIR /app
 
 # Copy environment.yml and create environment
 COPY environment.yml .
-
 RUN conda env create -f environment.yml
-
-# Activate the environment automatically
-SHELL ["conda", "run", "-n", "admet_env", "/bin/bash", "-c"]
 
 # Copy the rest of the project
 COPY . .
 
-# Expose port 8080 (Fly.io expects this)
+# Expose port 8080
 EXPOSE 8080
 
-# Run the Flask app
+# Run Flask app in the conda environment
 CMD ["conda", "run", "-n", "admet_env", "python", "app.py"]
