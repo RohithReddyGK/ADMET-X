@@ -9,6 +9,7 @@
 
   <!-- Badges -->
   <p>
+    <a href="https://admet-x.vercel.app/"><img src="https://img.shields.io/badge/Live-Demo-green" alt="LIVE DEMO"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
     <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue.svg" alt="Python"></a>
     <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-18.2.0-blue.svg" alt="React"></a>
@@ -38,7 +39,8 @@ Key highlights:
 - Interactive radar plots for ADMET visualization.
 - Toxicity prediction integrated with traditional ADME properties.
 - Support for drawing molecules and uploading files.
-- Ready-to-deploy with Docker and Fly.io
+- Ready-to-deploy with Docker and Fly.io.
+- Used Vercel for FrontEnd deployment.
 
 ---
 
