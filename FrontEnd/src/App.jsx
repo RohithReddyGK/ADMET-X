@@ -10,6 +10,7 @@ import introAnimation from "./assets/Doctor.json";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowIntro(false), 3000);

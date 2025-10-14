@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.metrics import classification_report, roc_auc_score, r2_score, mean_absolute_error, mean_squared_error
 import joblib   
 import numpy as np
+from paths import train_path, valid_path, test_path, prediction_path, model_path
 
 # ---------- Helper: Compute Molecular Descriptors ----------
 def compute_descriptors(smiles: str) -> dict:
@@ -57,7 +58,7 @@ def detect_task_type(df: pd.DataFrame, target_col="Y"):
 
 # ---------- Train Model ----------
 def train_model(train_csv: str, smiles_col="Drug", label_col="Y",
-                save_model_path=r"D:\VS Code Editor\Major Project\ADMET\Model_training\Absorption\HydrationFreeEnergy_FreeSolv.joblib"):
+                save_model_path=None):
     df = pd.read_csv(train_csv)
 
     task_type, units = detect_task_type(df, label_col)
@@ -131,18 +132,16 @@ def predict_and_save(model, feature_cols, valid_csv, out_csv, smiles_col="Drug",
 
 # ---------- Example Usage ----------
 if __name__ == "__main__":
-    model, feature_cols, task_type, units = train_model(
-        r"D:\VS Code Editor\Major Project\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\train.csv"
-    )
-    evaluate_model(
-        model, feature_cols,
-        r"D:\VS Code Editor\Major Project\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\test.csv",
-        task_type="regression"
-    )
-    df_valid = predict_and_save(
-        model, feature_cols,
-        r"D:\VS Code Editor\Major Project\ADMET\admet_data\Absorption\HydrationFreeEnergy_FreeSolv\valid.csv",
-        r"D:\VS Code Editor\Major Project\ADMET\Model_predictions\Absorption\HydrationFreeEnergy_FreeSolv.csv",
-        task_type=task_type, units=units
-    )
+    category = "Absorption"
+    model_name = "HydrationFreeEnergy_FreeSolv"
+
+    train_csv = train_path(category, model_name)
+    valid_csv = valid_path(category, model_name)
+    test_csv  = test_path(category, model_name)
+    out_csv   = prediction_path(category, model_name)
+    save_model_file = model_path(category, model_name)
+
+    model, feature_cols, task_type, units = train_model(train_csv, save_model_path=save_model_file)
+    evaluate_model(model, feature_cols, test_csv, task_type=task_type)
+    df_valid = predict_and_save_binary(model, feature_cols, valid_csv, out_csv, task_type=task_type, units=units)
     print(df_valid.head())

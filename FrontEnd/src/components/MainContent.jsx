@@ -16,7 +16,7 @@ const MainContent = () => {
       icon: <FaBrain size={36} className="text-blue-600 dark:text-blue-400 mb-3" />,
       title: "AI-Driven Engine",
       description:
-        "Leverages Graph Neural Networks (GNNs) built using PyTorch Geometric and DeepChem to capture molecular structure and predict outcomes with high precision.",
+        "Leverages Machine Learning algorithms like RandomForestClassifier, RandomForestRegressor, XGBoostClassifier and XGBoostRegressor for training models, for prediction of ADMET properties and to overcome the traditional methods.",
     },
     {
       icon: <FiDatabase size={36} className="text-blue-600 dark:text-blue-400 mb-3" />,
@@ -34,12 +34,12 @@ const MainContent = () => {
           </a>{" "}
           (Therapeutics Data Commons) and&nbsp;
           <a
-            href="https://www.ebi.ac.uk/chembl/"
+            href="https://pubchem.ncbi.nlm.nih.gov/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-700 dark:text-blue-300 underline"
           >
-            ChEMBL
+            PubChem
           </a>
           , ensuring broad coverage and robustness.
         </>
@@ -71,8 +71,8 @@ const MainContent = () => {
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-600 leading-relaxed">
           ADMET stands for{" "}
-          <strong>Absorption, Distribution, Metabolism, Excretion, and Toxicity</strong>.
-          This AI-Powered model utilizes Graph Neural Networks (GNNs) and Cheminformatics
+          <strong>Absorption, Distribution, Metabolism, Excretion and Toxicity</strong>.
+          This AI-Powered model utilizes Machine Learning Models and Cheminformatics
           to predict these critical drug properties, accelerating drug discovery.
         </p>
       </motion.section>
@@ -91,7 +91,7 @@ const MainContent = () => {
             <div className="flex flex-col items-center justify-center">
               {card.icon}
               <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{card.title}</h3>
-              <p className="text-sm text-justify text-gray-600 dark:text-gray-300">{card.description}</p>
+              <p className="text-sm text-center text-gray-600 dark:text-gray-300">{card.description}</p>
             </div>
           </motion.div>
         ))}
