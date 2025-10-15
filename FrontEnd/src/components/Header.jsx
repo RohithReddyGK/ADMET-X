@@ -18,8 +18,6 @@ function Header() {
         <link rel="canonical" href="https://admet-x.vercel.app/" />
         <link rel="icon" href="/ADMET-X.png" type="image/png" />
 
-          {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="Uo5MtecyVuiywk7WqIXclSGvv2yv9-blwnmsMDLNwug" />
       </Helmet>
 
       {/* Header UI */}
