@@ -46,7 +46,7 @@ Key highlights:
 
 ## Architecture Diagram
 
-<<img width="1092" height="480" alt="Project Flow" src="https://github.com/user-attachments/assets/4734ee12-fc9b-4723-bc22-7481fa63e5a0" />
+<img width="1092" height="480" alt="Project Flow" src="https://github.com/user-attachments/assets/4734ee12-fc9b-4723-bc22-7481fa63e5a0" />
 
 ---
 
