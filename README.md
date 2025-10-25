@@ -147,11 +147,11 @@ docker run -p 8080:8080 admet-ai
 ```bash
 "C:\Users\Rohith Reddy G K\.fly\bin\flyctl.exe" launch
 ```
-The URL is: https://admet-backend.fly.dev
+The BackEnd URL is: https://admet-backend.fly.dev
 
 ### **3. Vercel**
 Deployed FrontEnd in Vercel.
-The URL is: https://admet-x.vercel.app
+The FrontEnd URL is: https://admet-x.vercel.app
 
 ---
 
