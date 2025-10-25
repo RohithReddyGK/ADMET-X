@@ -111,7 +111,15 @@ const MainContent = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-800 mb-4">
-            What is ADMET?
+            What is {" "}
+            <a
+              href="https://admet-x.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-4xl font-bold text-gray-800 dark:text-gray-800 mb-4 hover:underline"
+            >
+              ADMET?
+            </a>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-600 leading-relaxed">
             ADMET stands for{" "}
