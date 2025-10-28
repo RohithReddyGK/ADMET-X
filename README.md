@@ -44,6 +44,12 @@ Key highlights:
 
 ---
 
+## 📝 Architecture Diagram
+
+<img width="1092" height="480" alt="Project Flow" src="https://github.com/user-attachments/assets/4734ee12-fc9b-4723-bc22-7481fa63e5a0" />
+
+---
+
 ## 💡 Features
 
 - **SMILES Input Options**: Text input, file upload (.txt/.csv), drawing molecules, or example molecules.
@@ -141,6 +147,11 @@ docker run -p 8080:8080 admet-ai
 ```bash
 "C:\Users\Rohith Reddy G K\.fly\bin\flyctl.exe" launch
 ```
+- The BackEnd URL is: https://admet-backend.fly.dev
+
+### **3. Vercel**
+- Deployed FrontEnd in Vercel.
+- The FrontEnd URL is: https://admet-x.vercel.app
 
 ---
 
@@ -174,4 +185,4 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 🌟If you liked our project, git it a ⭐.
+## 🌟If you like our project, git it a ⭐.
