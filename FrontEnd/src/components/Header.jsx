@@ -9,15 +9,40 @@ function Header() {
       {/* SEO Metadata for Header */}
       <Helmet>
         <title>ADMET-X | AI-Driven Platform for In-Silico ADMET Prediction</title>
+
         <meta
           name="description"
-          content="AI-powered platform for predicting Absorption, Distribution, Metabolism, Excretion, and Toxicity (ADMET) properties of drug molecules using advanced machine learning and cheminformatics."
+          content="ADMET-X is an AI-powered in-silico ADMET prediction platform for drug discovery. Predicts Absorption, Distribution, Metabolism, Excretion, and Toxicity of molecules using machine learning and cheminformatics."
         />
+
+        <meta
+          name="keywords"
+          content="ADMET, ADMET prediction, in-silico ADMET, AI ADMET, machine learning drug discovery, ADMET-X, pharmacokinetics, toxicity prediction, drug metabolism"
+        />
+
         <meta name="author" content="Sheik Arshad Ibrahim, Rohith Reddy G K, Sayed Jahangir Ali, Thirumurugan" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://admet-x.vercel.app/" />
         <link rel="icon" href="/ADMET-X.png" type="image/png" />
 
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ADMET-X",
+            "url": "https://admet-x.vercel.app/",
+            "description": "AI-driven ADMET prediction platform for drug discovery.",
+            "keywords": [
+              "ADMET",
+              "ADMET-X",
+              "ADMET prediction",
+              "AI ADMET",
+              "Drug Discovery",
+              "Pharmacokinetics",
+              "Toxicity Prediction"
+            ],
+          })}
+        </script>
       </Helmet>
 
       {/* Header UI */}

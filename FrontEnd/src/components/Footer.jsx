@@ -27,7 +27,7 @@ const Footer = () => {
             >
               ADMET-X
             </a>{" "}
-            is an AI-powered platform for predicting Absorption, Distribution, Metabolism, Excretion, and Toxicity properties of drug molecules, aiding faster drug discovery.
+            is an AI-powered platform for predicting ADMET - Absorption, Distribution, Metabolism, Excretion, and Toxicity properties of drug molecules, aiding faster drug discovery.
           </p>
           <a
             href="https://github.com/RohithReddyGK/ADMET-X"
