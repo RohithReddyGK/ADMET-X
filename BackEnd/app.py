@@ -5,7 +5,7 @@ import sys
 import joblib
 import traceback
 
-# ---------------- Deployment-safe paths ----------------
+# Deployment-safe paths 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Ensure modules are importable
@@ -17,7 +17,7 @@ from utils.chem_utils import compute_descriptors, mol_to_image
 from utils.plotting import radar_plot_image
 from utils.prediction_utils import safe_predict
 
-# ---------- CONFIG ----------
+# CONFIG
 MODELS_DIR = os.path.join(os.getcwd(), "Models")
 SCIENCE = ["Lipinski", "Ghose", "Veber", "Egan", "Muegge"]
 
@@ -78,7 +78,7 @@ category_props = {
     ]
 }
 
-# ---------- LOAD MODELS ----------
+# LOAD MODELS
 ADMET_MODELS = {}
 print("[INFO] Starting to load ADMET models...")
 for category, props in category_props.items():
@@ -99,7 +99,7 @@ for category, props in category_props.items():
         print(f"⚠️ Category folder not found: {category_path}")
 print(f"[INFO] Model loading finished. Total categories: {len(ADMET_MODELS)}")
 
-# ---------- PROPERTY STATUS ----------
+# PROPERTY STATUS
 def categorize_property(prop, value):
     try:
         v = float(value)
@@ -138,7 +138,7 @@ def categorize_property(prop, value):
     
     return "gray"
 
-# ---------- FLASK APP ----------
+# FLASK APP
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins":"*"}})
 
@@ -157,7 +157,7 @@ def predict():
         
         molecules=[]
         for smi in smiles_list:
-            # ---------- Descriptors ----------
+            # Descriptors
             descriptors = compute_descriptors(smi) or {
                 "MolWt":0,"LogP":0,"H-Donors":0,"H-Acceptors":0,
                 "TPSA":0,"RotBonds":0,"Atoms":0
@@ -165,7 +165,7 @@ def predict():
             mol_img = mol_to_image(smi) or ""
             radar_img = radar_plot_image(descriptors) or ""
 
-            # ---------- ADMET Predictions ----------
+            # ADMET Predictions 
             admet_results = {}
             for category, props in category_props.items():
                 admet_results[category] = []
@@ -214,7 +214,7 @@ def predict():
         traceback.print_exc()
         return jsonify({"molecules": []}), 500
 
-# ---------- START SERVER ----------
+# START SERVER
 if __name__ == "__main__":
     print("Starting Flask server...")
     port = int(os.environ.get("PORT", 8080))
