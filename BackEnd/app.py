@@ -18,11 +18,7 @@ from utils.plotting import radar_plot_image
 from utils.prediction_utils import safe_predict
 
 # ---------- CONFIG ----------
-<<<<<<< HEAD
-MODELS_DIR = os.path.join(BASE_DIR, "Models")
-=======
 MODELS_DIR = os.path.join(os.getcwd(), "Models")
->>>>>>> af9ce8401c07dbbf694915af6756665fd57727a9
 SCIENCE = ["Lipinski", "Ghose", "Veber", "Egan", "Muegge"]
 
 PROPERTY_UNITS = {
@@ -84,14 +80,8 @@ category_props = {
 
 # ---------- LOAD MODELS ----------
 ADMET_MODELS = {}
-<<<<<<< HEAD
-print("Loading ADMET models from:", MODELS_DIR)
-
-for category in category_props.keys():
-=======
 print("[INFO] Starting to load ADMET models...")
 for category, props in category_props.items():
->>>>>>> af9ce8401c07dbbf694915af6756665fd57727a9
     category_path = os.path.join(MODELS_DIR, category)
     ADMET_MODELS[category] = {}
     if os.path.isdir(category_path):
@@ -101,11 +91,6 @@ for category, props in category_props.items():
                 model_path = os.path.join(category_path, model_file)
                 try:
                     ADMET_MODELS[category][model_name] = joblib.load(model_path)
-<<<<<<< HEAD
-                    print(f"✅ Loaded {model_file} for category {category}")
-                except Exception as e:
-                    print(f"⚠️ Failed to load {model_file} at {model_path}: {e}")
-=======
                     print(f"✅ Loaded {category}/{model_file}")
                 except Exception as e:
                     print(f"⚠️ Failed to load {category}/{model_file}: {e}")
@@ -113,7 +98,6 @@ for category, props in category_props.items():
     else:
         print(f"⚠️ Category folder not found: {category_path}")
 print(f"[INFO] Model loading finished. Total categories: {len(ADMET_MODELS)}")
->>>>>>> af9ce8401c07dbbf694915af6756665fd57727a9
 
 # ---------- PROPERTY STATUS ----------
 def categorize_property(prop, value):
@@ -178,15 +162,8 @@ def predict():
                 "MolWt":0,"LogP":0,"H-Donors":0,"H-Acceptors":0,
                 "TPSA":0,"RotBonds":0,"Atoms":0
             }
-<<<<<<< HEAD
-            print(f"Descriptors for {smi}: {descriptors}")
-
-            mol_image = mol_to_image(smi) or ""
-            radar_image = radar_plot_image(descriptors) or ""
-=======
             mol_img = mol_to_image(smi) or ""
             radar_img = radar_plot_image(descriptors) or ""
->>>>>>> af9ce8401c07dbbf694915af6756665fd57727a9
 
             # ---------- ADMET Predictions ----------
             admet_results = {}
