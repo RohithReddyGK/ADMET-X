@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Collapse, Button, message, Tag } from "antd";
 import Plot from "react-plotly.js";
 import Conclusion from "./Conclusion";
+import TooltipCell from "./ToolTipCell";
 
 // Import your icons
 import molecularDescriptorIcon from "../assets/icons/Molecular_Descriptors.png";
@@ -217,7 +218,7 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
               {/* ADMET Tables with Icons */}
               <div className="mt-4 space-y-4">
                 {mol.ADMET && Object.keys(mol.ADMET).map((cat) => (
-                  <div key={cat} className="overflow-x-auto">
+                  <div key={cat} className="overflow-x-auto relative z-10 overflow-visible">
                     <h4 className="flex items-center gap-2 text-2xl font-bold text-gray-800 dark:text-white bg-white dark:bg-gray-600 px-2 py-1 rounded flex item-center gap 2">
                       {categoryIcons[cat] && (
                         <img src={categoryIcons[cat]} alt={cat} className="w-10 h-10" />
@@ -240,11 +241,13 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                             <tr
                               key={i}
                               className={`${i % 2 === 0
-                                ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
-                                : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
+                                ? "bg-blue-100 dark:bg-gray-800" 
+                                : "bg-blue-50 dark:bg-gray-700"  
                                 }`}
                             >
-                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">{row.property}</td>
+                              <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
+                                <TooltipCell name={row.property} />
+                              </td>
                               <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">
                                 {row.prediction?.toFixed?.(3) ?? "N/A"}
                               </td>
