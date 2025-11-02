@@ -1,4 +1,4 @@
-import { FaReact } from "react-icons/fa";
+import { FaReact, FaGithub } from "react-icons/fa";
 import { SiTailwindcss, SiFlask } from "react-icons/si";
 import { MdScience } from "react-icons/md";
 import { TbDatabaseCog } from "react-icons/tb";
@@ -11,7 +11,7 @@ const Footer = () => {
 
   useEffect(() => {
     const date = new Date();
-    const month = date.toLocaleDateString("default", { month: 'long' });
+    const month = date.toLocaleDateString("default", { month: "long" });
     const year = date.getFullYear();
     setAccessedDate(`${month} ${year}`);
   }, []);
@@ -36,90 +36,84 @@ const Footer = () => {
   return (
     <>
       <motion.footer
-        className="bg-blue-100 dark:bg-gray-800 text-gray-800 dark:text-white py-1 shadow-md"
-        initial={{ opacity: 0, y: 50 }}
+        className="bg-blue-100 dark:bg-gray-800 text-gray-800 dark:text-white py-4 shadow-md border-t border-gray-300 dark:border-gray-700"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.6 }}
       >
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between gap-4 sm:gap-16">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 sm:gap-4">
 
-          {/* ABOUT */}
-          <div className="flex-1 flex flex-col items-center sm:items-start sm:ml-[-2rem]">
-            <h3 className="font-semibold text-lg mb-3">ABOUT</h3>
-            <p className="text-lgs dark:text-gray-300 mb-2 text-center sm:text-left">
-              <a
-                href="https://admet-x.vercel.app"
-                target=" _blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline font-semibold text:justify"
-              >
-                ADMET-X
-              </a>{" "}
-              is an AI-powered platform for predicting ADMET - Absorption,
-              Distribution, Metabolism, Excretion, and Toxicity properties of drug
-              molecules, aiding faster drug discovery.
-            </p>
-            <a
-              href="https://github.com/RohithReddyGK/ADMET-X"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
-            >
-              View Project on GitHub
-            </a>
-          </div>
-
-          {/* DEV TOOLS */}
-          <div className="flex-1 flex flex-col items-center sm:items-start sm:ml-6">
-            <h3 className="font-semibold text-lg mb-3">DEV TOOLS:</h3>
-            <div className="flex gap-5 text-5xl sm:text-5xl">
-              <FaReact className="text-cyan-500 dark:text-cyan-400 hover:scale-110 transition-transform duration-200" title="React" />
-              <SiTailwindcss className="text-sky-400 dark:text-sky-400 hover:scale-110 transition-transform duration-200" title="Tailwind CSS" />
-              <SiFlask className="text-black dark:text-white hover:scale-110 transition-transform duration-200" title="Flask" />
-              <MdScience className="text-green-600 dark:text-green-400 hover:scale-110 transition-transform duration-200" title="RDKit" />
-              <TbDatabaseCog className="text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform duration-200" title="TDC" />
-            </div>
-          </div>
-
-          {/* CITE ADMET-X */}
-          <div className="flex-1 flex flex-col items-center sm:items-start sm:ml-12">
-            <h3 className="font-semibold text-lg mb-3 text-center sm:text-left">CURIOUS TO CITE
+          {/* ABOUT SECTION */}
+          <div className="flex-1 text-center sm:text-left space-y-2 pb-4 border-b border-gray-300 dark:border-gray-700 sm:border-none">
+            <h3 className="font-semibold text-lg tracking-wide">ABOUT</h3>
+            <p className="text-sm dark:text-gray-300 leading-relaxed">
               <a
                 href="https://admet-x.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline font-semibold mx-1"
+                className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
               >
                 ADMET-X
-              </a>{" "}:
-            </h3>
-            <div className="w-full flex justify-center sm:justify-start">
-              <button
-                onClick={() => setShowCite(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+              </a>{" "}
+              is an AI-powered platform for predicting ADMET properties — Absorption,
+              Distribution, Metabolism, Excretion and Toxicity — of drug molecules,
+              supporting accelerated drug discovery.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 justify-center sm:justify-start text-sm">
+              <a
+                href="https://github.com/RohithReddyGK/ADMET-X"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline font-semibold"
               >
-                Cite ADMET-X
-              </button>
+                <FaGithub className="text-black dark:text-white text-xl" />
+                <span>Lead Developer's GitHub</span>
+              </a>
+              <a
+                href="https://github.com/arshadibrahim882/ADMET-X"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+              >
+                <FaGithub className="text-black dark:text-white text-xl" />
+                <span>Contributor's GitHub</span>
+              </a>
             </div>
+          </div>
+
+          {/* DEV TOOLS */}
+          <div className="flex-1 text-center sm:text-left pb-4 border-b border-gray-300 dark:border-gray-700 sm:border-none">
+            <h3 className="font-semibold text-lg mb-2 tracking-wide">DEV TOOLS</h3>
+            <div className="flex justify-center sm:justify-start gap-4 text-4xl">
+              <FaReact className="text-cyan-500 dark:text-cyan-400 hover:scale-110 transition-transform" title="React" />
+              <SiTailwindcss className="text-sky-400 dark:text-sky-400 hover:scale-110 transition-transform" title="Tailwind CSS" />
+              <SiFlask className="text-black dark:text-white hover:scale-110 transition-transform" title="Flask" />
+              <MdScience className="text-green-600 dark:text-green-400 hover:scale-110 transition-transform" title="RDKit" />
+              <TbDatabaseCog className="text-purple-600 dark:text-purple-400 hover:scale-110 transition-transform" title="TDC" />
+            </div>
+          </div>
+
+          {/* CITE SECTION */}
+          <div className="flex-1 text-center sm:text-left pb-4 border-b border-gray-300 dark:border-gray-700 sm:border-none">
+            <h3 className="font-semibold text-lg mb-2 tracking-wide">
+              CURIOUS TO CITE ADMET-X?
+            </h3>
+            <button
+              onClick={() => setShowCite(true)}
+              className="bg-blue-600 text-white px-4 py-2 text-sm rounded-lg hover:bg-blue-700 transition"
+            >
+              Cite ADMET-X
+            </button>
           </div>
         </div>
 
-        <div className="mt-4 text-center text-lg font-semibold dark:text-gray-400">
-          © {new Date().getFullYear()}
-          <a
-            href="https://admet-x.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 dark:text-blue-400 hover:underline font-semibold mx-1"
-          >
-            ADMET-X
-          </a>{" "}
-          — All rights reserved.
+        <div className="mt-4 text-center text-sm font-bold dark:text-gray-400">
+          © {new Date().getFullYear()} ADMET-X Team — All rights reserved.
         </div>
       </motion.footer>
 
-      {/* Modal Popup for Cite ADMET-X */}
+      {/* Citation Modal */}
       {showCite && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-2xl shadow-2xl w-11/12 sm:w-2/3 md:w-1/2 p-6 relative">

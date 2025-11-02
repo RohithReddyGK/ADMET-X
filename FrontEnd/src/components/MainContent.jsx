@@ -89,10 +89,10 @@ const MainContent = () => {
             description:
               "AI-driven platform for predicting ADMET properties (Absorption, Distribution, Metabolism, Excretion, and Toxicity) of drug molecules.",
             url: "https://admet-x.vercel.app/",
-            author: {
-              "@type": "Person",
-              name: "Rohith Reddy G K",
-            },
+            author: [
+              { "@type": "Person", name: "Rohith Reddy G K" },
+              { "@type": "Person", name: "Sheik Arshad Ibrahim" }
+            ],
             image: "https://admet-x.vercel.app/ADMET-X.png",
           })}
         </script>
@@ -111,15 +111,7 @@ const MainContent = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-800 mb-4">
-            What is {" "}
-            <a
-              href="https://admet-x.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-4xl font-bold text-gray-800 dark:text-gray-800 mb-4 hover:underline"
-            >
-              ADMET?
-            </a>
+            What is ADMET?
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-600 leading-relaxed">
             ADMET stands for{" "}

@@ -241,8 +241,8 @@ const PredictionPanel = ({ results, smilesInput, setSmilesInput }) => {
                             <tr
                               key={i}
                               className={`${i % 2 === 0
-                                ? "bg-blue-100 dark:bg-gray-800" 
-                                : "bg-blue-50 dark:bg-gray-700"  
+                                ? "bg-blue-100 dark:bg-gray-800" // softened for even rows
+                                : "bg-blue-50 dark:bg-gray-700"  // softened for odd rows
                                 }`}
                             >
                               <td className="px-2 py-1 border border-blue-300 dark:border-gray-700">

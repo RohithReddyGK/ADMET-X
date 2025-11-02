@@ -5,11 +5,11 @@ export const propertyInfo = {
     link: "https://tdcommons.ai/single_pred_tasks/adme/#bioavailability-ma-et-al"
   },
   Caco2_Wang: {
-    description: "he human colon epithelial cancer cell, Caco-2 - is used as an in vitro model to simulate the human intestinal tissue. The experimental result on the rate of drug passing through the Caco-2 cells can approximate the rate at which the drug permeates through the human intestinal tissue.",
+    description: "The human colon epithelial cancer cell, Caco-2 - is used as an in vitro model to simulate the human intestinal tissue. The experimental result on the rate of drug passing through the Caco-2 cells can approximate the rate at which the drug permeates through the human intestinal tissue.",
     link: "https://tdcommons.ai/single_pred_tasks/adme/#caco-2-cell-effective-permeability-wang-et-al"
   },
   HIA_Hou: {
-    description: "hen a drug is orally administered, it needs to be absorbed from the human gastrointestinal system into the bloodstream of the human body. This ability of absorption is called human intestinal absorption (HIA) and it is crucial for a drug to be delivered to the target.",
+    description: "When a drug is orally administered, it needs to be absorbed from the human gastrointestinal system into the bloodstream of the human body. This ability of absorption is called human intestinal absorption (HIA) and it is crucial for a drug to be delivered to the target.",
     link: "https://tdcommons.ai/single_pred_tasks/adme/#hia-human-intestinal-absorption-hou-et-al"
   },
   HydrationFreeEnergy_FreeSolv: {

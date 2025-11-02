@@ -8,7 +8,7 @@ function Header() {
     <>
       {/* SEO Metadata for Header */}
       <Helmet>
-        <title>ADMET-X | AI-Driven Platform for In-Silico ADMET Prediction</title>
+        <title>ADMET-X</title>
 
         <meta
           name="description"
@@ -20,7 +20,7 @@ function Header() {
           content="ADMET, ADMET prediction, in-silico ADMET, AI ADMET, machine learning drug discovery, ADMET-X, pharmacokinetics, toxicity prediction, drug metabolism"
         />
 
-        <meta name="author" content="Sheik Arshad Ibrahim, Rohith Reddy G K, Sayed Jahangir Ali, Thirumurugan" />
+        <meta name="author" content="Sheik Arshad Ibrahim, Rohith Reddy G K, Sayed Jahangir Ali, Thirumurugan M" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://admet-x.vercel.app/" />
         <link rel="icon" href="/ADMET-X.png" type="image/png" />
