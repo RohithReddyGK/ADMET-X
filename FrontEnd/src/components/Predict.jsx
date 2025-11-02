@@ -6,6 +6,8 @@ import predictAnimation from "../assets/Predict.json";
 import loadingAnimation from "../assets/Loading.json";
 import PredictionPanel from "./PredictionPanel";
 
+const BASE_URL=import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8080"
+
 // Relaxed SMILES validation to allow real-world SMILES
 const isValidSmiles = (smiles) =>
   /^[A-Za-z0-9@+\-\[\]\(\)=#$%./\\]+$/.test(smiles);
@@ -77,7 +79,7 @@ C1=CC=CC=C1 Benzene`
     try {
       setLoading(true);
 
-      const resp = await fetch("http://127.0.0.1:8080/predict", {
+      const resp = await fetch(`${BASE_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ smiles: processedInput.map((i) => i.smiles) }),

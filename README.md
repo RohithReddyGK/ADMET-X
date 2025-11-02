@@ -9,6 +9,7 @@
 
   <!-- Badges -->
   <p>
+    <a href="https://admet-x.vercel.app/"><img src="https://img.shields.io/badge/Live-Demo-green" alt="LIVE DEMO"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
     <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12-blue.svg" alt="Python"></a>
     <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-18.2.0-blue.svg" alt="React"></a>
@@ -38,7 +39,14 @@ Key highlights:
 - Interactive radar plots for ADMET visualization.
 - Toxicity prediction integrated with traditional ADME properties.
 - Support for drawing molecules and uploading files.
-- Ready-to-deploy with Docker and Fly.io
+- Ready-to-deploy with Docker and Fly.io.
+- Used Vercel for FrontEnd deployment.
+
+---
+
+## 📝 Architecture Diagram
+
+<img width="1092" height="480" alt="Project Flow" src="https://github.com/user-attachments/assets/4734ee12-fc9b-4723-bc22-7481fa63e5a0" />
 
 ---
 
@@ -54,6 +62,13 @@ Key highlights:
 - **Interactive Visualization**: Molecule images, radar plots, and color-coded property status.
 - **Export Results**: Download predictions as a CSV file.
 - **Local & Online Deployment**: Works both locally and via Fly.io deployment.
+
+---
+
+## 📊 Datasets
+
+- **TDC**(Therapeutics Data Commons): [TDC](https://tdcommons.ai/single_pred_tasks/overview/) - Used for Model -> training, testing and validating.
+- **PubChem**: [PubChem](https://pubchem.ncbi.nlm.nih.gov/) - Used for Batch Predictions.
 
 ---
 
@@ -132,6 +147,11 @@ docker run -p 8080:8080 admet-ai
 ```bash
 "C:\Users\Rohith Reddy G K\.fly\bin\flyctl.exe" launch
 ```
+- The BackEnd URL is: https://admet-backend.fly.dev
+
+### **3. Vercel**
+- Deployed FrontEnd in Vercel.
+- The FrontEnd URL is: https://admet-x.vercel.app
 
 ---
 
@@ -165,4 +185,4 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 🌟If you liked our project, git it a ⭐.
+## 🌟If you like our project, git it a ⭐.
