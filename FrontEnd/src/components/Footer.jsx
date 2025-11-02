@@ -23,7 +23,7 @@ const Footer = () => {
 
   const generalCitation = `Rohith Reddy.G.K, Sheik Arshad Ibrahim, et al. (2025). ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction. [Online]. Available: https://admet-x.vercel.app`;
 
-  const ieeeCitation = `[1] Sheik Arshad Ibrahim, [2] Rohith Reddy.G.K, et al., “ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction,” 2025. [Online]. Available: https://admet-x.vercel.app`;
+  const ieeeCitation = `[1] Sheik Arshad Ibrahim, Rohith Reddy.G.K, et al., “ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction,” 2025. [Online]. Available: https://admet-x.vercel.app`;
 
   const bibtexCitation = `@software{admetx2025,
   author = {Sheik Arshad Ibrahim, Rohith Reddy.G.K and others},
