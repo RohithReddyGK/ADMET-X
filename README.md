@@ -185,4 +185,4 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 🌟If you like our project, git it a ⭐.
+## 🌟If you like our project, give it a ⭐.
