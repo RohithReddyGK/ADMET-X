@@ -185,4 +185,27 @@ Contributions are welcome! To contribute:
 
 ---
 
+## Curious to Cite ADMET-X?
+
+### General Citation Format:
+```bash
+Rohith Reddy.G.K, Sheik Arshad Ibrahim, et al. (2025). ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction. [Online]. Available: https://admet-x.vercel.app
+```
+
+### IEEE Format:
+```bash
+[1] Sheik Arshad Ibrahim, Rohith Reddy.G.K, et al., “ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction,” 2025. [Online]. Available: https://admet-x.vercel.app
+```
+
+### BibTex Format:
+```bash
+@software{admetx2025,
+  author = {Sheik Arshad Ibrahim, Rohith Reddy.G.K and others},
+  title = {ADMET-X: AI-Driven Platform for In-Silico ADMET Prediction},
+  year = {2025},
+  url = {https://admet-x.vercel.app},
+  note = {Accessed: current_month current_year}
+}
+```
+
 ## 🌟If you like our project, give it a ⭐.
