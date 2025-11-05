@@ -1,7 +1,7 @@
 <div align="center">
 
   <!-- Title -->
-  <h1 style="font-size: 10em; font:bold;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
+  <h1 style="font-size: 10em;">An AI-Driven Platform for In-Silico ADMET Prediction</h1>
 
   <!-- Logo -->
   <img width="200" height="200" alt="ADMET-X Logo" src="https://github.com/user-attachments/assets/5fe01a51-fec8-441e-a973-11cfdee642a1"/>
